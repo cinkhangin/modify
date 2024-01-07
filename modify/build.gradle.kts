@@ -66,7 +66,7 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                groupId = "com.naulian.modify"
+                groupId = "com.github.cinkhangin"
                 artifactId = "modify"
                 version = "0.1"
                 from(components["release"])
