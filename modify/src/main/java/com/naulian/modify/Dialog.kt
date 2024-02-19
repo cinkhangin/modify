@@ -33,6 +33,30 @@ import androidx.compose.ui.window.DialogProperties
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+fun BasicDialog(
+    onDismissRequest: () -> Unit,
+    modifier: Modifier = Modifier,
+    shape: Shape = AlertDialogDefaults.shape,
+    containerColor: Color = AlertDialogDefaults.containerColor,
+    tonalElevation: Dp = AlertDialogDefaults.TonalElevation,
+    properties: DialogProperties = DialogProperties(),
+    content: @Composable () -> Unit,
+) = BasicAlertDialog(
+    onDismissRequest = onDismissRequest,
+    modifier = modifier,
+    properties = properties
+) {
+    Surface(
+        modifier = modifier,
+        shape = shape,
+        color = containerColor,
+        tonalElevation = tonalElevation,
+        content = content
+    )
+}
+
+
+@Composable
 fun Dialog(
     onDismissRequest: () -> Unit,
     confirmButton: @Composable () -> Unit,
@@ -46,38 +70,34 @@ fun Dialog(
     containerColor: Color = AlertDialogDefaults.containerColor,
     tonalElevation: Dp = AlertDialogDefaults.TonalElevation,
     properties: DialogProperties = DialogProperties()
-) = BasicAlertDialog(
+) = BasicDialog(
     onDismissRequest = onDismissRequest,
     modifier = modifier,
-    properties = properties
+    properties = properties,
+    shape = shape,
+    tonalElevation = tonalElevation,
+    containerColor = containerColor
 ) {
-    Surface(
-        modifier = modifier,
-        shape = shape,
-        color = containerColor,
-        tonalElevation = tonalElevation,
+    Column(
+        modifier = Modifier.padding(contentPadding),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = contentArrangement
     ) {
-        Column(
-            modifier = Modifier.padding(contentPadding),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = contentArrangement
-        ) {
-            title?.invoke()
-            content()
+        title?.invoke()
+        content()
 
-            val btnWeight = if (dismissButton == null) 1f else 0.5f
-            Row {
-                dismissButton?.let { button ->
-                    Box(modifier = Modifier.weight(0.5f, true)) {
-                        button()
-                    }
-
-                    Spacer(Modifier.width(16.dp))
+        val btnWeight = if (dismissButton == null) 1f else 0.5f
+        Row {
+            dismissButton?.let { button ->
+                Box(modifier = Modifier.weight(0.5f, true)) {
+                    button()
                 }
 
-                Box(modifier = Modifier.weight(btnWeight, true)) {
-                    confirmButton()
-                }
+                Spacer(Modifier.width(16.dp))
+            }
+
+            Box(modifier = Modifier.weight(btnWeight, true)) {
+                confirmButton()
             }
         }
     }
