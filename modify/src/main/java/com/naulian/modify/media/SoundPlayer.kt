@@ -5,7 +5,7 @@ import android.media.MediaPlayer
 import androidx.annotation.RawRes
 
 fun Context.playSound(@RawRes resId: Int) {
-    SoundPlayer.play()
+    SoundPlayer.create(this, resId).play()
 }
 
 fun releaseSoundPlayer() {
