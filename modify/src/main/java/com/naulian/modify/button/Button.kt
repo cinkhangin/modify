@@ -1,6 +1,5 @@
 package com.naulian.modify.button
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.naulian.modify.PreviewColumn
 import androidx.compose.material3.Button as M3Button
@@ -47,7 +47,8 @@ private fun OutlinedButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     shape: Shape = RoundedCornerShape(8.dp),
-    border: BorderStroke = ButtonDefaults.outlinedButtonBorder,
+    borderThickness: Dp = 1.dp,
+    borderColor: Color = MaterialTheme.colorScheme.primary,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     content: @Composable RowScope.() -> Unit
 ) {
@@ -56,7 +57,7 @@ private fun OutlinedButton(
         modifier = modifier.height(56.dp),
         enabled = enabled,
         shape = shape,
-        border = border,
+        border = ButtonDefaults.outlinedButtonBorder, //problem here
         contentPadding = contentPadding,
         content = content,
     )
@@ -66,16 +67,21 @@ private fun OutlinedButton(
 @Composable
 private fun ButtonPreview() {
     PreviewColumn {
-        Button(modifier = Modifier
-            .padding(12.dp)
-            .fillMaxWidth(), onClick = {}
+        Button(
+            modifier = Modifier
+                .padding(12.dp)
+                .fillMaxWidth(),
+            onClick = {}
         ) {
             Text(text = "Button")
         }
 
-        OutlinedButton(modifier = Modifier
-            .padding(12.dp)
-            .fillMaxWidth(), onClick = {}
+        OutlinedButton(
+            modifier = Modifier
+                .padding(12.dp)
+                .fillMaxWidth(),
+            enabled = false,
+            onClick = {}
         ) {
             Text(text = "Button")
         }
