@@ -1,5 +1,6 @@
 package com.naulian.modify.button
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -42,7 +43,7 @@ fun Button(
 }
 
 @Composable
-private fun OutlinedButton(
+fun OutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -52,12 +53,15 @@ private fun OutlinedButton(
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     content: @Composable RowScope.() -> Unit
 ) {
+    val borderStroke = if (enabled) BorderStroke(borderThickness, borderColor)
+    else ButtonDefaults.outlinedButtonBorder
+
     M3OutlineButton(
         onClick = onClick,
         modifier = modifier.height(56.dp),
         enabled = enabled,
         shape = shape,
-        border = ButtonDefaults.outlinedButtonBorder, //problem here
+        border = borderStroke,
         contentPadding = contentPadding,
         content = content,
     )
@@ -80,7 +84,7 @@ private fun ButtonPreview() {
             modifier = Modifier
                 .padding(12.dp)
                 .fillMaxWidth(),
-            enabled = false,
+            enabled = true,
             onClick = {}
         ) {
             Text(text = "Button")
