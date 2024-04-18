@@ -1,11 +1,11 @@
-package com.example.modify.media
+package com.naulian.modify.media
 
 import android.content.Context
 import android.media.MediaPlayer
 import androidx.annotation.RawRes
 
 fun Context.playSound(@RawRes resId: Int) {
-    SoundPlayer.create(this, resId).play()
+    SoundPlayer.play()
 }
 
 fun releaseSoundPlayer() {

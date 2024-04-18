@@ -1,4 +1,4 @@
-package com.example.modify
+package com.naulian.modify
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -29,8 +29,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import com.example.modify.button.Button
-import com.example.modify.button.OutlinedButton
+import com.naulian.modify.button.Button
+import com.naulian.modify.button.OutlinedButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

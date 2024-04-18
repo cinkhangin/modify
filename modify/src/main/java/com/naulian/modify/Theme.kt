@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.example.modify
+package com.naulian.modify
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

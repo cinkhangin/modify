@@ -1,4 +1,4 @@
-package com.example.modify
+package com.naulian.modify
 
 interface Selectable<T> {
     fun copyData(selected: Boolean): T

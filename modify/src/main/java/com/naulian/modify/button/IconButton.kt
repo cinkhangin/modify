@@ -1,4 +1,4 @@
-package com.example.modify.button
+package com.naulian.modify.button
 
 
 import androidx.compose.foundation.layout.size
@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.modify.PreviewRow
+import com.naulian.modify.PreviewRow
 import androidx.compose.material3.IconButton as M3IconButton
 
 @Composable

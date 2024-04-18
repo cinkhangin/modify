@@ -1,4 +1,4 @@
-package com.example.modify.button
+package com.naulian.modify.button
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.modify.PreviewColumn
+import com.naulian.modify.PreviewColumn
 import androidx.compose.material3.Button as M3Button
 import androidx.compose.material3.OutlinedButton as M3OutlineButton
 

@@ -1,4 +1,4 @@
-package com.example.modify.topbar
+package com.naulian.modify.topbar
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.modify.Preview
+import com.naulian.modify.Preview
 import androidx.compose.material3.TopAppBar as M3TopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)

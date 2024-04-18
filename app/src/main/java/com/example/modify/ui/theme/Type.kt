@@ -6,7 +6,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.modify.bold
+import com.naulian.modify.bold
 
 // Set of Material typography styles to start with
 val MyTypography = Typography(
