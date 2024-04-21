@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -29,6 +29,7 @@ import com.naulian.modify.sheet.BottomSheet
 import com.naulian.modify.sheet.BottomSheetHeader
 import com.naulian.modify.themeColors
 import com.naulian.modify.topbar.TopAppBar
+import com.naulian.modify.web.Browser
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +60,10 @@ fun MainContent() {
         mutableStateOf(false)
     }
 
+    var showBrowser by remember {
+        mutableStateOf(false)
+    }
+
     DeleteDialog(
         showDialog = showDialog,
         onDismissRequest = { showDialog = false },
@@ -82,8 +87,16 @@ fun MainContent() {
         }
 
         IconButton(
-            imageVector = Icons.Rounded.Favorite,
-            onClick = {}
+            imageVector = Icons.Rounded.Search,
+            onClick = { showBrowser = true }
+        )
+    }
+
+    if (showBrowser) {
+        Browser(
+            url = "www.google.com",
+            onUrlLoad = {},
+            onLoading = {}
         )
     }
 
@@ -94,7 +107,8 @@ fun MainContent() {
         BottomSheetHeader(
             modifier = Modifier,
             title = "Bottom Sheet",
-            onDismiss = { showSheet = false })
+            onDismiss = { showSheet = false }
+        )
     }
 }
 

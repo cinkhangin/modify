@@ -34,7 +34,7 @@ fun BottomSheet(
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     contentPadding: PaddingValues = PaddingValues(0.dp),
-    shape: RoundedCornerShape = RoundedCornerShape(topStartPercent = 20, topEndPercent = 20),
+    shape: RoundedCornerShape = RoundedCornerShape(topStartPercent = 6, topEndPercent = 6),
     content: @Composable ColumnScope.() -> Unit,
 ) {
     if (show) {

@@ -69,7 +69,7 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 groupId = "com.naulian"
                 artifactId = "modify"
-                version = "0.0.1-alpha13"
+                version = "0.0.1-alpha14"
                 from(components["release"])
             }
         }
