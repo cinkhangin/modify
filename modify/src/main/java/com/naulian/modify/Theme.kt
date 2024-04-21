@@ -15,6 +15,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 val themeColors @Composable get() = MaterialTheme.colorScheme
 val themeStyles @Composable get() = MaterialTheme.typography
@@ -32,10 +33,11 @@ internal fun Preview(modifier: Modifier = Modifier, content: @Composable () -> U
 @Composable
 internal fun PreviewScreen(
     modifier: Modifier = Modifier,
+    color: Color = themeColors.surface,
     content: @Composable () -> Unit = {}
 ) {
     MaterialTheme {
-        Surface(modifier.fillMaxSize(), color = themeColors.surface, content = content)
+        Surface(modifier.fillMaxSize(), color = color, content = content)
     }
 }
 
