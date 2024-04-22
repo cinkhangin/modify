@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -86,7 +87,6 @@ fun Dialog(
     ) {
         title?.invoke()
         content()
-
         val btnWeight = if (dismissButton == null) 1f else 0.5f
         Row {
             dismissButton?.let { button ->
@@ -135,6 +135,7 @@ fun AlertDialog(
                         style = MaterialTheme.typography.bodyLarge,
                         textAlign = TextAlign.Center
                     )
+                    Spacer(modifier = Modifier.height(0.dp))
                 }
 
                 extras()
@@ -209,7 +210,7 @@ fun OneMessageDialog(
                             .fillMaxWidth()
                             .padding(24.dp),
                         text = message,
-                        style = MaterialTheme.typography.titleSmall,
+                        style = MaterialTheme.typography.titleLarge,
                         textAlign = TextAlign.Center
                     )
                 }
