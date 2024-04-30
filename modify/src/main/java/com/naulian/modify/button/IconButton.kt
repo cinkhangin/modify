@@ -22,13 +22,16 @@ fun IconButton(
     modifier: Modifier = Modifier,
     painter: Painter,
     iconSize: Dp = 24.dp,
+    tint: Color = Color.Unspecified,
     onClick: () -> Unit,
     contentDescription: String = ""
 ) {
     M3IconButton(modifier = modifier, onClick = onClick) {
         Icon(
             modifier = Modifier.size(iconSize),
-            painter = painter, contentDescription = contentDescription
+            painter = painter,
+            tint = tint,
+            contentDescription = contentDescription
         )
     }
 }

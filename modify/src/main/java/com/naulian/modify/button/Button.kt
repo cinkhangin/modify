@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -51,12 +52,21 @@ fun OutlinedButton(
     enabled: Boolean = true,
     shape: Shape = RoundedCornerShape(8.dp),
     borderThickness: Dp = 1.dp,
-    borderColor: Color = MaterialTheme.colorScheme.primary,
+    color: Color = MaterialTheme.colorScheme.primary,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     content: @Composable RowScope.() -> Unit
 ) {
-    val borderStroke = if (enabled) BorderStroke(borderThickness, borderColor)
-    else ButtonDefaults.outlinedButtonBorder
+
+    val borderStroke: BorderStroke
+    val buttonColors: ButtonColors
+
+    if (enabled) {
+        borderStroke = BorderStroke(borderThickness, color)
+        buttonColors = ButtonDefaults.outlinedButtonColors(contentColor = color)
+    } else {
+        borderStroke = ButtonDefaults.outlinedButtonBorder
+        buttonColors = ButtonDefaults.outlinedButtonColors()
+    }
 
     M3OutlineButton(
         onClick = onClick,
@@ -65,8 +75,10 @@ fun OutlinedButton(
         shape = shape,
         border = borderStroke,
         contentPadding = contentPadding,
-        content = content,
+        colors = buttonColors,
+        content = content
     )
+
 }
 
 @Preview
@@ -86,8 +98,9 @@ private fun ButtonPreview() {
             modifier = Modifier
                 .padding(12.dp)
                 .fillMaxWidth(),
-            enabled = true,
-            onClick = {}
+            enabled = false,
+            onClick = {},
+            color = Color.Red
         ) {
             Text(text = "Button")
         }
