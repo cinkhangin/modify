@@ -7,6 +7,7 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -27,7 +28,7 @@ fun TopAppBar(
     onClickNavIcon: () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
     windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
-    color: Color = Color.White,
+    color: Color = MaterialTheme.colorScheme.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     M3TopAppBar(
