@@ -7,6 +7,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -15,10 +16,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,6 +41,7 @@ import com.naulian.modify.table.TableRow
 import com.naulian.modify.themeColors
 import com.naulian.modify.topbar.TopAppBar
 import com.naulian.modify.web.Browser
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,13 +68,14 @@ fun MainContent() {
         mutableStateOf(false)
     }
 
-    var showSheet by remember {
-        mutableStateOf(false)
-    }
-
     var showBrowser by remember {
         mutableStateOf(false)
     }
+
+    var isVisible by remember {
+        mutableStateOf(false)
+    }
+
 
     DeleteDialog(
         showDialog = showDialog,
@@ -90,7 +95,7 @@ fun MainContent() {
             Text(text = "Delete Dialog")
         }
 
-        OutlinedButton(onClick = { showSheet = true }) {
+        OutlinedButton(onClick = { isVisible = true }) {
             Text(text = "Bottom Sheet")
         }
 
@@ -139,15 +144,24 @@ fun MainContent() {
         )
     }
 
+    val sheetState = rememberModalBottomSheetState(true)
+    val coroutineScope = rememberCoroutineScope()
+
     BottomSheet(
-        show = showSheet,
-        onDismiss = { showSheet = false }
+        sheetState = sheetState,
+        show = isVisible,
+        onDismissRequest = { isVisible = false }
     ) {
         BottomSheetHeader(
             modifier = Modifier,
             title = "Bottom Sheet",
-            onDismiss = { showSheet = false }
+            onDismiss = {
+                coroutineScope.launch { sheetState.hide() }
+                    .invokeOnCompletion { isVisible = false }
+            }
         )
+
+        Text(text = "Sheet Content", modifier = Modifier.height(200.dp))
     }
 }
 
