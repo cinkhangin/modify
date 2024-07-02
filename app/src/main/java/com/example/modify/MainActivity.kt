@@ -3,17 +3,14 @@ package com.example.modify
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -34,10 +31,6 @@ import com.naulian.modify.button.OutlinedButton
 import com.naulian.modify.sheet.BottomSheet
 import com.naulian.modify.sheet.BottomSheetHeader
 import com.naulian.modify.table.Table
-import com.naulian.modify.table.TableCell
-import com.naulian.modify.table.TableHeader
-import com.naulian.modify.table.TableItems
-import com.naulian.modify.table.TableRow
 import com.naulian.modify.themeColors
 import com.naulian.modify.topbar.TopAppBar
 import com.naulian.modify.web.Browser
@@ -104,36 +97,20 @@ fun MainContent() {
             onClick = { showBrowser = true }
         )
 
-        val items by remember {
+        val data by remember {
             mutableStateOf(
                 listOf(
-                    listOf("Fish4dogs", "Truline"),
-                    listOf("Burp!", "Black Hawk"),
-                    listOf("Pronature", "Canine Caviar"),
-                    listOf("1st Choice", "Vets All Natural")
+                    listOf("Lorem", "Lorem", ""),
+                    listOf("Lorem", "", "Lorem"),
+                    listOf("Lorem", "Lorem", ""),
+                    listOf("Lorem", "Lorem", "")
                 )
             )
         }
 
-        Table(
-            modifier = Modifier
-                .border(
-                    1.dp,
-                    color = MaterialTheme.colorScheme.outline,
-                    shape = RoundedCornerShape(12.dp)
-                ),
-            items = items,
-            rowItem = {
-                TableRow(items = it) { modifier, item ->
-                    TableCell(modifier = modifier, text = item)
-                }
-            }
-        )
-
-        Table(
-            header = { TableHeader(items = listOf("Name", "Breed")) },
-            content = { TableItems(items = items) }
-        )
+        Table(modifier = Modifier.padding(12.dp), data = data) {
+            Text(modifier = Modifier.padding(horizontal = 10.dp), text = it)
+        }
     }
 
     if (showBrowser) {
