@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.naulian.modify"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
@@ -68,7 +68,7 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 groupId = "com.naulian"
                 artifactId = "modify"
-                version = "0.0.2"
+                version = "0.0.3"
                 from(components["release"])
             }
         }
