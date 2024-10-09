@@ -27,7 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.naulian.modify.bold
+import com.naulian.modify.Bold
 import com.naulian.modify.themeColors
 import com.naulian.modify.themeStyles
 
@@ -45,7 +45,7 @@ fun Chip(
     checkContainerColor: Color = MaterialTheme.colorScheme.primary,
     textColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
     checkTextColor: Color = MaterialTheme.colorScheme.onPrimary,
-    textStyle: TextStyle = themeStyles.labelSmall.bold(),
+    textStyle: TextStyle = themeStyles.labelSmall.Bold,
     outline: Boolean = false,
     shape: RoundedCornerShape = RoundedCornerShape(4.dp),
     isChecked: Boolean = false,
