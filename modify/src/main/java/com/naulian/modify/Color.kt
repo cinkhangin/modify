@@ -1,9 +1,13 @@
+@file:Suppress("unused")
+
 package com.naulian.modify
 
 import androidx.compose.ui.graphics.Color
 import android.graphics.Color as LegacyColor
 
-fun Color.fromHex(hexColor: String): Color {
+fun colorFromHex(hexColor: String): Color {
     val legacyColor = LegacyColor.parseColor(hexColor)
     return Color(legacyColor)
 }
+
+fun Color.alpha(value: Float) = copy(alpha = value)

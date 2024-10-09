@@ -1,7 +1,9 @@
+@file:Suppress("unused")
+
 package com.naulian.modify
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 
-fun TextStyle.normal() = copy(fontWeight = FontWeight.Normal)
-fun TextStyle.bold() = copy(fontWeight = FontWeight.Bold)
+val TextStyle.Normal get() = copy(fontWeight = FontWeight.Normal)
+val TextStyle.Bold get() = copy(fontWeight = FontWeight.Bold)
