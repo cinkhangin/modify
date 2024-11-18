@@ -1,36 +1,20 @@
 package com.naulian.modify
 
-interface Selectable<T> {
-    fun copyData(selected: Boolean): T
-}
 
 data class SelectableItem<T>(
     val item: T,
     val selected: Boolean = false
+)
 
-) : Selectable<SelectableItem<T>> {
-    override fun copyData(selected: Boolean): SelectableItem<T> {
-        return copy(selected = selected)
-    }
-}
-
-fun <T : Selectable<T>> List<T>.singleSelectBy(
+fun <T> List<SelectableItem<T>>.selectBy(
     selector: (T) -> Boolean,
-) = map { it.copyData(selector(it)) }
+) = map { it.copy(selected = selector(it.item)) }
 
-fun <T : Selectable<T>> List<T>.selectAll(value: Boolean) = map { it.copyData(selected = value) }
+fun <T> List<SelectableItem<T>>.selectAll(value: Boolean) = map { it.copy(selected = value) }
 
-
-fun <T : Selectable<T>> List<T>.singleSelectByIndex(
-    selector: (Int) -> Boolean,
-) = mapIndexed { index, item ->
-    item.copyData(selector(index))
-}
-
-
-fun <T : Selectable<T>> List<T>.multiSelectBy(
-    selector: (T) -> Pair<Boolean, Boolean>,
+fun <T> List<SelectableItem<T>>.multiSelectBy(
+    selector: (T) -> Boolean,
 ) = map {
-    val (isSelect, selected) = selector(it)
-    it.copyData(isSelect xor selected)
+    val selected = selector(it.item)
+    it.copy(selected = it.selected xor selected)
 }

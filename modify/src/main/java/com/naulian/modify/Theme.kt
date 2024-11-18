@@ -21,7 +21,6 @@ val themeColors @Composable get() = MaterialTheme.colorScheme
 val themeStyles @Composable get() = MaterialTheme.typography
 val themeShapes @Composable get() = MaterialTheme.shapes
 
-
 //methods to help when setting previews more efficiently
 @Composable
 internal fun Preview(modifier: Modifier = Modifier, content: @Composable () -> Unit = {}) {

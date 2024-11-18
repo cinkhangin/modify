@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HorizontalSpace(modifier: Modifier = Modifier, width: Dp) {
+fun HorizontalSpace(width: Dp = 12.dp, modifier: Modifier = Modifier) {
     Spacer(modifier = modifier.width(width))
 }
 
@@ -24,14 +24,22 @@ fun HorizontalSpace(modifier: Modifier = Modifier, width: Dp) {
 @Composable
 private fun HorizontalSpacePreview() {
     Row {
-        Box(modifier = Modifier.size(100.dp).background(Color.White))
-        HorizontalSpace(width = 100.dp)
-        Box(modifier = Modifier.size(100.dp).background(Color.White))
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(Color.White)
+        )
+        HorizontalSpace(100.dp)
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(Color.White)
+        )
     }
 }
 
 @Composable
-fun VerticalSpace(modifier: Modifier = Modifier, height: Dp) {
+fun VerticalSpace(height: Dp = 12.dp, modifier: Modifier = Modifier) {
     Spacer(modifier = modifier.height(height))
 }
 
@@ -39,8 +47,16 @@ fun VerticalSpace(modifier: Modifier = Modifier, height: Dp) {
 @Composable
 private fun VerticalSpacePreview() {
     Column {
-        Box(modifier = Modifier.size(100.dp).background(Color.White))
-        VerticalSpace(height = 100.dp)
-        Box(modifier = Modifier.size(100.dp).background(Color.White))
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(Color.White)
+        )
+        VerticalSpace(100.dp)
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(Color.White)
+        )
     }
 }
