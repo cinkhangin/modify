@@ -70,7 +70,7 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates("com.naulian", "modify", "0.1.0-alpha04")
+    coordinates("com.naulian", "modify", "0.1.0-alpha05")
 
     pom {
         name.set("Modify")
