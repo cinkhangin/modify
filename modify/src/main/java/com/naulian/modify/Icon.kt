@@ -12,15 +12,15 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.material3.Icon as M3Icon
+import androidx.compose.material3.Icon
 
 @Composable
-fun Icon(
+fun MIcon(
     modifier: Modifier = Modifier,
     @DrawableRes drawableId: Int,
     contentDescription: String = "Icon"
 ) {
-    M3Icon(
+    Icon(
         modifier = modifier,
         painter = painterResource(drawableId),
         contentDescription = contentDescription
@@ -34,7 +34,7 @@ fun DrawableIcon(
     iconSize: Dp = 20.dp,
     tint: Color = MaterialTheme.colorScheme.onBackground
 ) {
-    M3Icon(
+    Icon(
         modifier = modifier.size(iconSize),
         painter = painterResource(id = drawableId),
         contentDescription = null,
@@ -49,7 +49,7 @@ fun VectorIcon(
     iconSize: Dp = 20.dp,
     tint: Color = Color.Unspecified
 ) {
-    M3Icon(
+    Icon(
         modifier = modifier.size(iconSize),
         imageVector = imageVector,
         contentDescription = null,

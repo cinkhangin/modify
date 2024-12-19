@@ -1,6 +1,14 @@
 package com.naulian.modify
 
-object Lorem {
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+
+object MLorem {
     val short = "Lorem ipsum dolor sit amet"
     val normal = """
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -18,4 +26,18 @@ object Lorem {
         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
     """.paragraph()
+}
+
+@Preview
+@Composable
+private fun LoremPreview() {
+    PreviewColumn(
+        modifier = Modifier.padding(20.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        Text(text = MLorem.short)
+        Text(text = MLorem.normal)
+        Text(text = MLorem.medium)
+        Text(text = MLorem.long)
+    }
 }

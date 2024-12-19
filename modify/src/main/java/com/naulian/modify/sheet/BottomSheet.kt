@@ -18,7 +18,7 @@ import com.naulian.modify.PreviewScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BottomSheet(
+fun MBottomSheet(
     show: Boolean = true,
     sheetState: SheetState,
     onDismissRequest: () -> Unit,
@@ -61,7 +61,7 @@ private fun BottomSheetPreview() {
             mutableStateOf(true)
         }
 
-        BottomSheet(
+        MBottomSheet(
             show = isVisible,
             sheetState = previewSheetState(),
             onDismissRequest = {

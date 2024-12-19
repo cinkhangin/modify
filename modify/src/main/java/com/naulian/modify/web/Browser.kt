@@ -13,7 +13,7 @@ import com.naulian.modify.PreviewScreen
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun Browser(
+fun MBrowser(
     url: String,
     onUrlLoad: (String) -> Unit,
     onLoading: (Boolean) -> Unit,
@@ -59,7 +59,7 @@ fun Browser(
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun WebIFrame(
+fun MWebIFrame(
     html: String,
     onUrlLoad: (String) -> Unit,
     onLoading: (Boolean) -> Unit,
@@ -107,7 +107,7 @@ fun WebIFrame(
 @Composable
 fun PLCIFramePreview() {
     PreviewScreen {
-        WebIFrame(
+        MWebIFrame(
             html = """
                 <iframe 
                     width="100%" 

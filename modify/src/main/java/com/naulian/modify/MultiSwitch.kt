@@ -131,9 +131,9 @@ fun MultiSwitch(
 private fun ThemeSwitchPreview() {
     val items by rememberListState(
         listOf(
-            MultiSwitchItem(id = "1", name = "Post", icon = Modicons.Back),
-            MultiSwitchItem(id = "2", name = "Home", icon = Modicons.Copy),
-            MultiSwitchItem(id = "3", name = "Profile", icon = Modicons.Cancel)
+            MultiSwitchItem(id = "1", name = "Post", icon = MIcons.Back),
+            MultiSwitchItem(id = "2", name = "Home", icon = MIcons.Copy),
+            MultiSwitchItem(id = "3", name = "Profile", icon = MIcons.Cancel)
         )
     )
 

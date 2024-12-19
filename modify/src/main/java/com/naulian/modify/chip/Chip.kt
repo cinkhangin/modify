@@ -32,7 +32,7 @@ import com.naulian.modify.themeColors
 import com.naulian.modify.themeStyles
 
 @Composable
-fun Chip(
+fun MChip(
     modifier: Modifier = Modifier,
     label: String,
     height: Dp = 25.dp,
@@ -89,7 +89,7 @@ fun Chip(
 }
 
 @Composable
-fun SmallChip(
+fun MSmallChip(
     label: String,
     allCaps: Boolean = false,
     containerColor: Color = themeColors.primaryContainer,
@@ -98,7 +98,7 @@ fun SmallChip(
     shape: RoundedCornerShape = RoundedCornerShape(4.dp)
 ) {
 
-    Chip(
+    MChip(
         height = 18.dp,
         label = label,
         allCaps = allCaps,
@@ -120,9 +120,9 @@ fun ChipPreview() {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
 
-            SmallChip(label = "Chip")
+            MSmallChip(label = "Chip")
 
-            Chip(
+            MChip(
                 height = 25.dp,
                 label = "Lowercase",
                 shape = RoundedCornerShape(50),
@@ -134,7 +134,7 @@ fun ChipPreview() {
                 isChecked = false
             )
 
-            Chip(
+            MChip(
                 height = 25.dp,
                 label = "Lowercase",
                 shape = RoundedCornerShape(50),
@@ -146,7 +146,7 @@ fun ChipPreview() {
                 isChecked = true
             )
 
-            Chip(
+            MChip(
                 height = 30.dp,
                 label = "Uncheck Outline",
                 shape = RoundedCornerShape(50),
@@ -159,7 +159,7 @@ fun ChipPreview() {
                 outline = true
             )
 
-            Chip(
+            MChip(
                 height = 30.dp,
                 label = "Checked",
                 shape = RoundedCornerShape(50),

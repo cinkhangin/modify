@@ -21,7 +21,7 @@ import androidx.compose.material3.TopAppBar as M3TopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBar(
+fun MTopAppBar(
     modifier: Modifier = Modifier,
     title: String = "",
     navigationIcon: ImageVector? = Icons.AutoMirrored.Rounded.ArrowBack,
@@ -51,8 +51,8 @@ fun TopAppBar(
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-private fun TopAppBarPreview() {
+private fun MTopAppBarPreview() {
     Preview {
-        TopAppBar(title = "Top App Bar")
+        MTopAppBar(title = "Top App Bar")
     }
 }

@@ -30,12 +30,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import com.naulian.modify.button.Button
-import com.naulian.modify.button.OutlinedButton
+import com.naulian.modify.button.MButton
+import com.naulian.modify.button.MOutlinedButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BasicDialog(
+fun MBasicDialog(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     shape: Shape = AlertDialogDefaults.shape,
@@ -59,7 +59,7 @@ fun BasicDialog(
 
 
 @Composable
-fun Dialog(
+fun MDialog(
     onDismissRequest: () -> Unit,
     confirmButton: @Composable () -> Unit,
     modifier: Modifier = Modifier,
@@ -72,7 +72,7 @@ fun Dialog(
     containerColor: Color = AlertDialogDefaults.containerColor,
     tonalElevation: Dp = AlertDialogDefaults.TonalElevation,
     properties: DialogProperties = DialogProperties()
-) = BasicDialog(
+) = MBasicDialog(
     onDismissRequest = onDismissRequest,
     modifier = modifier,
     properties = properties,
@@ -117,7 +117,7 @@ fun AlertDialog(
     onConfirmed: () -> Unit = {},
 ) {
     if (showDialog) {
-        Dialog(
+        MDialog(
             modifier = modifier,
             title = {
                 Text(
@@ -145,7 +145,7 @@ fun AlertDialog(
             onDismissRequest = { onDismissRequest() },
             dismissButton = if (secondaryAction.isEmpty()) null else {
                 {
-                    OutlinedButton(
+                    MOutlinedButton(
                         onClick = { onDismissRequest() },
                         modifier = Modifier.fillMaxWidth(),
                         height = 40.dp,
@@ -157,7 +157,7 @@ fun AlertDialog(
             },
             confirmButton = {
                 if (primaryAction.isNotEmpty()) {
-                    Button(
+                    MButton(
                         onClick = { onConfirmed() },
                         modifier = Modifier.fillMaxWidth(),
                         height = 40.dp,
@@ -201,7 +201,7 @@ fun OneMessageDialog(
     onAction: () -> Unit = {},
 ) {
     if (showDialog) {
-        Dialog(
+        MDialog(
             modifier = modifier,
             content = {
                 if (message.isNotEmpty()) {

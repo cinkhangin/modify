@@ -25,15 +25,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.modify.ui.theme.ModifyTheme
 import com.naulian.modify.DeleteDialog
-import com.naulian.modify.button.Button
-import com.naulian.modify.button.IconButton
-import com.naulian.modify.button.OutlinedButton
-import com.naulian.modify.sheet.BottomSheet
+import com.naulian.modify.button.MButton
+import com.naulian.modify.button.MIconButton
+import com.naulian.modify.button.MOutlinedButton
 import com.naulian.modify.sheet.BottomSheetHeader
-import com.naulian.modify.table.Table
+import com.naulian.modify.sheet.MBottomSheet
+import com.naulian.modify.table.MTable
 import com.naulian.modify.themeColors
-import com.naulian.modify.topbar.TopAppBar
-import com.naulian.modify.web.Browser
+import com.naulian.modify.topbar.MTopAppBar
+import com.naulian.modify.web.MBrowser
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -82,17 +82,17 @@ fun MainContent() {
             .fillMaxSize()
             .padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        TopAppBar(title = "Top App Bar")
+        MTopAppBar(title = "Top App Bar")
 
-        Button(onClick = { showDialog = true }) {
+        MButton(onClick = { showDialog = true }) {
             Text(text = "Delete Dialog")
         }
 
-        OutlinedButton(onClick = { isVisible = true }) {
+        MOutlinedButton(onClick = { isVisible = true }) {
             Text(text = "Bottom Sheet")
         }
 
-        IconButton(
+        MIconButton(
             imageVector = Icons.Rounded.Search,
             onClick = { showBrowser = true }
         )
@@ -108,13 +108,13 @@ fun MainContent() {
             )
         }
 
-        Table(modifier = Modifier.padding(12.dp), data = data) {
+        MTable(modifier = Modifier.padding(12.dp), data = data) {
             Text(modifier = Modifier.padding(horizontal = 10.dp), text = it)
         }
     }
 
     if (showBrowser) {
-        Browser(
+        MBrowser(
             url = "www.google.com",
             onUrlLoad = {},
             onLoading = {}
@@ -124,7 +124,7 @@ fun MainContent() {
     val sheetState = rememberModalBottomSheetState(true)
     val coroutineScope = rememberCoroutineScope()
 
-    BottomSheet(
+    MBottomSheet(
         sheetState = sheetState,
         show = isVisible,
         onDismissRequest = { isVisible = false }

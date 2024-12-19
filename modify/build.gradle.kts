@@ -70,7 +70,12 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates("com.naulian", "modify", "0.1.0-alpha05")
+    coordinates(
+        groupId = "com.naulian",
+        artifactId = "modify",
+        version = "0.1.0-alpha06"
+    )
+    //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
     pom {
         name.set("Modify")

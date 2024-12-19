@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.naulian.modify.Preview
-import com.naulian.modify.button.IconButton
+import com.naulian.modify.button.MIconButton
 
 @Composable
 fun BottomSheetHeader(
@@ -29,7 +29,7 @@ fun BottomSheetHeader(
         verticalAlignment = verticalAlignment
     ) {
         onDismiss?.let {
-            IconButton(
+            MIconButton(
                 imageVector = closeIcon,
                 contentDescription = "Close Icon",
                 onClick = it
@@ -45,7 +45,7 @@ fun BottomSheetHeader(
         )
 
         onDismiss?.let {
-            IconButton(
+            MIconButton(
                 imageVector = closeIcon,
                 contentDescription = "Close Icon",
                 onClick = it,

@@ -15,10 +15,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.naulian.modify.PreviewRow
-import androidx.compose.material3.IconButton as M3IconButton
+import androidx.compose.material3.IconButton
 
 @Composable
-fun IconButton(
+fun MIconButton(
     modifier: Modifier = Modifier,
     painter: Painter,
     iconSize: Dp = 24.dp,
@@ -26,7 +26,7 @@ fun IconButton(
     onClick: () -> Unit,
     contentDescription: String = ""
 ) {
-    M3IconButton(modifier = modifier, onClick = onClick) {
+    IconButton(modifier = modifier, onClick = onClick) {
         Icon(
             modifier = Modifier.size(iconSize),
             painter = painter,
@@ -37,7 +37,7 @@ fun IconButton(
 }
 
 @Composable
-fun IconButton(
+fun MIconButton(
     modifier: Modifier = Modifier,
     imageVector: ImageVector,
     iconSize: Dp = 24.dp,
@@ -45,7 +45,7 @@ fun IconButton(
     onClick: () -> Unit,
     contentDescription: String = ""
 ) {
-    M3IconButton(modifier = modifier, onClick = onClick) {
+    IconButton(modifier = modifier, onClick = onClick) {
         Icon(
             modifier = Modifier.size(iconSize),
             imageVector = imageVector,
@@ -59,11 +59,11 @@ fun IconButton(
 @Composable
 private fun IconButtonPreview() {
     PreviewRow {
-        IconButton(
+        MIconButton(
             imageVector = Icons.Rounded.Add,
             onClick = { /*TODO*/ }
         )
-        IconButton(
+        MIconButton(
             painter = rememberVectorPainter(image = Icons.Rounded.Add),
             onClick = { /*TODO*/ }
         )

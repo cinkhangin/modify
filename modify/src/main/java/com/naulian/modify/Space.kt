@@ -20,6 +20,13 @@ fun HorizontalSpace(width: Dp = 12.dp, modifier: Modifier = Modifier) {
     Spacer(modifier = modifier.width(width))
 }
 
+@Composable
+fun MSpacer(width: Dp = 0.dp, height: Dp = 0.dp, modifier: Modifier = Modifier) {
+    Spacer(modifier = modifier
+        .width(width)
+        .height(height))
+}
+
 @Preview
 @Composable
 private fun HorizontalSpacePreview() {

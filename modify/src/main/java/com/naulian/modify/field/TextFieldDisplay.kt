@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.naulian.modify.Preview
 
 @Composable
-fun TextFieldDisplay(
+fun MTextFieldDisplay(
     modifier: Modifier = Modifier,
     text: String = "",
     trailingIcon: @Composable (() -> Unit)? = null,
@@ -53,9 +53,9 @@ fun TextFieldDisplay(
 
 @Preview
 @Composable
-fun TextFieldDisplayPreview() {
+fun MTextFieldDisplayPreview() {
     Preview {
-        TextFieldDisplay(
+        MTextFieldDisplay(
             modifier = Modifier.padding(16.dp),
             text = "John Smith",
             trailingIcon = {
