@@ -129,7 +129,7 @@ fun MultiSwitch(
 @Preview
 @Composable
 private fun ThemeSwitchPreview() {
-    val items by rememberListState(
+    val items by rememberDataState(
         listOf(
             MultiSwitchItem(id = "1", name = "Post", icon = MIcons.Back),
             MultiSwitchItem(id = "2", name = "Home", icon = MIcons.Copy),

@@ -2,14 +2,21 @@
 
 package com.naulian.modify
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -81,3 +88,27 @@ fun Modifier.noRippleClick(
     indication = null,
     onClick = onClick
 )
+
+val TextFieldState.string get() = text.toString()
+
+fun Modifier.If(condition: Boolean, modifier: Modifier.() -> Modifier): Modifier {
+    return if (condition) this.then(this.modifier()) else this
+}
+
+@Preview
+@Composable
+private fun IfTest() {
+    Box(modifier = Modifier
+        .size(100.dp)
+        .background(Color.Blue)
+        .If(false) {
+            padding(20.dp).background(Color.Red)
+        }
+        .padding(10.dp)
+        .background(Color.Green))
+}
+
+@Composable
+fun IfNotEmpty(string: String, block: @Composable (String) -> Unit) {
+    if (string.isNotEmpty()) block(string)
+}

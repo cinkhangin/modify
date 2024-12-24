@@ -158,7 +158,7 @@ fun AlertDialog(
             confirmButton = {
                 if (primaryAction.isNotEmpty()) {
                     MButton(
-                        onClick = { onConfirmed() },
+                        onClick = { onDismissRequest(); onConfirmed() },
                         modifier = Modifier.fillMaxWidth(),
                         height = 40.dp,
                         shape = RoundedCornerShape(50)

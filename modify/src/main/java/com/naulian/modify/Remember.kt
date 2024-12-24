@@ -33,22 +33,5 @@ fun <T> rememberDataState(default: T) =
     remember { mutableStateOf(default) }
 
 @Composable
-fun <T> rememberListState(default: List<T>) =
-    remember { mutableStateOf(default) }
-
-//these are experimental
-@Composable
-fun <T> rememberMapState(default: Map<String, T>) =
-    remember { mutableStateOf(default) }
-
-@Composable
-fun <T> rememberSetListState(default: Set<T>) =
-    remember { mutableStateOf(default) }
-
-@Composable
-fun <T> rememberArrayState(default: Array<T>) =
-    remember { mutableStateOf(default) }
-
-@Composable
 fun <T> rememberDerivedState(calculation: () -> T) =
     remember { derivedStateOf(calculation) }

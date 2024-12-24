@@ -73,7 +73,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.naulian",
         artifactId = "modify",
-        version = "0.1.0-alpha06"
+        version = "0.1.0-beta01"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
@@ -94,6 +94,7 @@ mavenPublishing {
                 id.set("naulian")
                 name.set("Naulian")
                 url.set("https://github.com/cinkhangin/")
+                email.set("hello@naulian.com")
             }
         }
         scm {
