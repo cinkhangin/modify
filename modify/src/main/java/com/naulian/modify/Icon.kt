@@ -13,17 +13,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 
 @Composable
 fun MIcon(
     modifier: Modifier = Modifier,
     @DrawableRes drawableId: Int,
-    contentDescription: String = "Icon"
+    contentDescription: String = "Icon",
+    tint: Color = LocalContentColor.current
 ) {
     Icon(
         modifier = modifier,
         painter = painterResource(drawableId),
-        contentDescription = contentDescription
+        contentDescription = contentDescription,
+        tint = tint
     )
 }
 

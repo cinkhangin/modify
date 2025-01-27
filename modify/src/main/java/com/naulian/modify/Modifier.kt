@@ -2,6 +2,7 @@
 
 package com.naulian.modify
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -91,7 +92,9 @@ fun Modifier.noRippleClick(
 
 val TextFieldState.string get() = text.toString()
 
-fun Modifier.If(condition: Boolean, modifier: Modifier.() -> Modifier): Modifier {
+@SuppressLint("ComposableNaming")
+@Composable
+fun Modifier.If(condition: Boolean, modifier: @Composable Modifier.() -> Modifier): Modifier {
     return if (condition) this.then(this.modifier()) else this
 }
 
