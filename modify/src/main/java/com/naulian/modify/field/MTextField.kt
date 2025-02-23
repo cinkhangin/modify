@@ -40,11 +40,12 @@ fun MBasicTextField(
     readOnly: Boolean = false,
     placeHolder: String = "Text here",
     inputTransformation: InputTransformation? = null,
+    textColor: Color = MaterialTheme.colorScheme.onBackground,
     textStyle: TextStyle = TextStyle.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     onKeyboardAction: KeyboardActionHandler? = null,
-    cursorColor: Color = MaterialTheme.colorScheme.onPrimary,
-    cursonBrush: Brush = SolidColor(cursorColor)
+    cursorColor: Color = textColor,
+    cursorBrush: Brush = SolidColor(cursorColor)
 ) {
     var onFocus by rememberBooleanState()
 
@@ -59,11 +60,11 @@ fun MBasicTextField(
         },
         enabled = enabled,
         readOnly = readOnly,
-        textStyle = textStyle,
+        textStyle = textStyle.copy(color = textColor),
         inputTransformation = inputTransformation,
         keyboardOptions = keyboardOptions,
         onKeyboardAction = onKeyboardAction,
-        cursorBrush = cursonBrush
+        cursorBrush = cursorBrush
     )
 }
 
@@ -71,7 +72,7 @@ fun MBasicTextField(
 @Composable
 fun MTextField(
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colorScheme.onBackground,
+    textColor: Color = MaterialTheme.colorScheme.onBackground,
     containerColor: Color = MaterialTheme.colorScheme.background,
     accentColor: Color = MaterialTheme.colorScheme.primary,
     shape: Shape = MaterialTheme.shapes.small,
@@ -83,6 +84,8 @@ fun MTextField(
     textStyle: TextStyle = TextStyle.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     onKeyboardAction: KeyboardActionHandler? = null,
+    cursorColor: Color = textColor,
+    cursorBrush: Brush = SolidColor(cursorColor)
 ) {
     var onFocus by rememberBooleanState()
 
@@ -109,9 +112,10 @@ fun MTextField(
         enabled = enabled,
         readOnly = readOnly,
         inputTransformation = inputTransformation,
-        textStyle = textStyle.copy(color = color),
+        textStyle = textStyle.copy(color = textColor),
         keyboardOptions = keyboardOptions,
-        onKeyboardAction = onKeyboardAction
+        onKeyboardAction = onKeyboardAction,
+        cursorBrush = cursorBrush
     )
 }
 
