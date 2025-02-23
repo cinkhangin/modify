@@ -21,8 +21,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,6 +43,8 @@ fun MBasicTextField(
     textStyle: TextStyle = TextStyle.Default,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     onKeyboardAction: KeyboardActionHandler? = null,
+    cursorColor: Color = MaterialTheme.colorScheme.onPrimary,
+    cursonBrush: Brush = SolidColor(cursorColor)
 ) {
     var onFocus by rememberBooleanState()
 
@@ -58,7 +62,8 @@ fun MBasicTextField(
         textStyle = textStyle,
         inputTransformation = inputTransformation,
         keyboardOptions = keyboardOptions,
-        onKeyboardAction = onKeyboardAction
+        onKeyboardAction = onKeyboardAction,
+        cursorBrush = cursonBrush
     )
 }
 
@@ -66,8 +71,9 @@ fun MBasicTextField(
 @Composable
 fun MTextField(
     modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colorScheme.onBackground,
     containerColor: Color = MaterialTheme.colorScheme.background,
-    accentColor : Color = MaterialTheme.colorScheme.primary,
+    accentColor: Color = MaterialTheme.colorScheme.primary,
     shape: Shape = MaterialTheme.shapes.small,
     state: TextFieldState,
     enabled: Boolean = true,
@@ -103,7 +109,7 @@ fun MTextField(
         enabled = enabled,
         readOnly = readOnly,
         inputTransformation = inputTransformation,
-        textStyle = textStyle,
+        textStyle = textStyle.copy(color = color),
         keyboardOptions = keyboardOptions,
         onKeyboardAction = onKeyboardAction
     )
