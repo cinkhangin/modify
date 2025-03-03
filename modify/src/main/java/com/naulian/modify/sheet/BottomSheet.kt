@@ -3,6 +3,7 @@ package com.naulian.modify.sheet
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.SheetValue
@@ -23,7 +24,7 @@ fun MBottomSheet(
     sheetState: SheetState,
     onDismissRequest: () -> Unit,
     dragHandle: (@Composable () -> Unit)? = null,
-    bgColor: Color = Color(0xFFFFFFFF),
+    bgColor: Color = MaterialTheme.colorScheme.background,
     shape: RoundedCornerShape = RoundedCornerShape(topStartPercent = 6, topEndPercent = 6),
     content: @Composable ColumnScope.() -> Unit,
 ) {

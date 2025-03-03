@@ -3,11 +3,14 @@ package com.example.modify
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -15,12 +18,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.modify.ui.theme.ModifyTheme
@@ -28,17 +34,21 @@ import com.naulian.modify.DeleteDialog
 import com.naulian.modify.button.MButton
 import com.naulian.modify.button.MIconButton
 import com.naulian.modify.button.MOutlinedButton
+import com.naulian.modify.field.MTextField
 import com.naulian.modify.sheet.BottomSheetHeader
 import com.naulian.modify.sheet.MBottomSheet
 import com.naulian.modify.table.MTable
 import com.naulian.modify.themeColors
 import com.naulian.modify.topbar.MTopAppBar
 import com.naulian.modify.web.MBrowser
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
         setContent {
             ModifyTheme {
                 // A surface container using the 'background' color from the theme
@@ -67,6 +77,18 @@ fun MainContent() {
 
     var isVisible by remember {
         mutableStateOf(false)
+    }
+
+    val textFieldState = remember {
+        TextFieldState("")
+    }
+    val focusRequester = remember {
+        FocusRequester()
+    }
+
+    LaunchedEffect(Unit) {
+        delay(10000)
+        focusRequester.requestFocus()
     }
 
 
@@ -111,6 +133,12 @@ fun MainContent() {
         MTable(modifier = Modifier.padding(12.dp), data = data) {
             Text(modifier = Modifier.padding(horizontal = 10.dp), text = it)
         }
+
+        MTextField(
+            modifier = Modifier.fillMaxWidth(),
+            state = textFieldState,
+            focusRequester = focusRequester
+        )
     }
 
     if (showBrowser) {

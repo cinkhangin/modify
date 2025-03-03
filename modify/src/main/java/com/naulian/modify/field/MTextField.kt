@@ -20,6 +20,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -45,7 +47,7 @@ fun MBasicTextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     onKeyboardAction: KeyboardActionHandler? = null,
     cursorColor: Color = textColor,
-    cursorBrush: Brush = SolidColor(cursorColor)
+    cursorBrush: Brush = SolidColor(cursorColor),
 ) {
     var onFocus by rememberBooleanState()
 
@@ -55,7 +57,7 @@ fun MBasicTextField(
         state = state,
         decorator = {
             if (state.text.isEmpty() && !onFocus) {
-                Text(text = placeHolder, style = textStyle)
+                Text(text = placeHolder, style = textStyle.copy(color = textStyle.color.copy(alpha = 0.6f)))
             } else it()
         },
         enabled = enabled,
@@ -85,18 +87,20 @@ fun MTextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     onKeyboardAction: KeyboardActionHandler? = null,
     cursorColor: Color = textColor,
-    cursorBrush: Brush = SolidColor(cursorColor)
+    cursorBrush: Brush = SolidColor(cursorColor),
+    focusRequester: FocusRequester = FocusRequester(),
 ) {
     var onFocus by rememberBooleanState()
 
     BasicTextField(
         modifier = modifier
+            .focusRequester(focusRequester)
             .onFocusChanged { onFocus = it.hasFocus },
         state = state,
         decorator = {
             Box(
                 modifier = Modifier
-                    .heightIn(min = 58.dp)
+                    .heightIn(min = 56.dp)
                     .background(color = containerColor, shape = shape)
                     .If(onFocus) {
                         border(1.dp, accentColor, shape = shape)
@@ -105,7 +109,7 @@ fun MTextField(
                 contentAlignment = Alignment.CenterStart
             ) {
                 if (state.text.isEmpty()) {
-                    Text(text = placeHolder, style = textStyle)
+                    Text(text = placeHolder, style = textStyle.copy(color = textStyle.color.copy(alpha = 0.5f)))
                 } else it()
             }
         },

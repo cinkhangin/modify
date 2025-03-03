@@ -32,7 +32,8 @@ fun BottomSheetHeader(
             MIconButton(
                 imageVector = closeIcon,
                 contentDescription = "Close Icon",
-                onClick = it
+                onClick = it,
+                tint = MaterialTheme.colorScheme.onBackground
             )
         }
 
