@@ -21,42 +21,32 @@ val themeColors @Composable get() = MaterialTheme.colorScheme
 val themeStyles @Composable get() = MaterialTheme.typography
 val themeShapes @Composable get() = MaterialTheme.shapes
 
-@Composable
-fun PreviewTheme(content: @Composable () -> Unit) {
-    MaterialTheme(
-        colorScheme = MaterialTheme.colorScheme,
-        typography = MaterialTheme.typography,
-        shapes = MaterialTheme.shapes,
-        content = content
-    )
-}
-
 //methods to help when setting previews more efficiently
 @Composable
-fun Preview(modifier: Modifier = Modifier, content: @Composable BoxScope.() -> Unit = {}) {
-    PreviewTheme {
+internal fun Preview(modifier: Modifier = Modifier, content: @Composable BoxScope.() -> Unit = {}) {
+    MaterialTheme {
         Box(modifier = modifier, content = content)
     }
 }
 
 @Composable
-fun PreviewScreen(
+internal fun PreviewScreen(
     modifier: Modifier = Modifier,
     color: Color = themeColors.surface,
     content: @Composable () -> Unit = {}
 ) {
-    PreviewTheme {
+    MaterialTheme {
         Surface(modifier.fillMaxSize(), color = color, content = content)
     }
 }
 
 
 @Composable
-fun PreviewBox(
+internal fun PreviewBox(
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit = {}
 ) {
-    PreviewTheme {
+    MaterialTheme {
         Surface {
             Box(modifier = modifier, content = content)
         }
@@ -64,13 +54,13 @@ fun PreviewBox(
 }
 
 @Composable
-fun PreviewColumn(
+internal fun PreviewColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     content: @Composable ColumnScope.() -> Unit = {}
 ) {
-    PreviewTheme {
+    MaterialTheme {
         Surface {
             Column(
                 modifier = modifier,
@@ -83,13 +73,13 @@ fun PreviewColumn(
 }
 
 @Composable
-fun PreviewRow(
+internal fun PreviewRow(
     modifier: Modifier = Modifier,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     content: @Composable RowScope.() -> Unit = {}
 ) {
-    PreviewTheme {
+    MaterialTheme {
         Surface {
             Row(
                 modifier = modifier,
