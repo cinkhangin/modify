@@ -239,7 +239,7 @@ fun OneMessageDialog(
 @Preview
 @Composable
 fun OneMessageDialogPreview() {
-    MaterialTheme {
+    Preview {
         OneMessageDialog(message = "Copied", showDialog = true)
     }
 }
@@ -247,7 +247,7 @@ fun OneMessageDialogPreview() {
 @Preview
 @Composable
 fun DeleteDialogPreview() {
-    MaterialTheme {
+    Preview {
         DeleteDialog(showDialog = true)
     }
 }
