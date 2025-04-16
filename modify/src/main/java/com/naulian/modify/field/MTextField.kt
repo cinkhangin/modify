@@ -109,7 +109,7 @@ fun MTextField(
                 contentAlignment = Alignment.CenterStart
             ) {
                 if (state.text.isEmpty()) {
-                    Text(text = placeHolder, style = textStyle.copy(color = textStyle.color.copy(alpha = 0.5f)))
+                    Text(text = placeHolder, style = textStyle.copy(color = textColor.copy(alpha = 0.5f)))
                 } else it()
             }
         },
