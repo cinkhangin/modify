@@ -11,20 +11,42 @@ import androidx.compose.ui.unit.dp
 
 //MIcons icons are from hugeicons.com
 object MIcons {
-    val Copy = R.drawable.ic_copy
-    val Back = R.drawable.ic_back
-    val Cancel = R.drawable.ic_cancel
-    val Delete = R.drawable.ic_delete
-    val Settings = R.drawable.ic_settings
-    val Search = R.drawable.ic_search
-    val Notification = R.drawable.ic_notification
-    val Image = R.drawable.ic_image
+    val Account = R.drawable.ic_account
     val Add = R.drawable.ic_add
 
+    val Back = R.drawable.ic_back
+
+    val Cancel = R.drawable.ic_cancel
+    val Comment = R.drawable.ic_comment
+    val Copy = R.drawable.ic_copy
+
+    val Delete = R.drawable.ic_delete
+    val Draw = R.drawable.ic_draw
+
     val Edit = R.drawable.ic_pencil2
-    val Edit1 = R.drawable.ic_edit1
-    val Edit2 = R.drawable.ic_edit2
-    val Edit3 = R.drawable.ic_pencil1
+
+    val Favourite = R.drawable.ic_favourite
+
+    val Home = R.drawable.ic_home
+
+    val Image = R.drawable.ic_image
+    val Internet = R.drawable.ic_internet
+
+    val Link = R.drawable.ic_link
+    val Location = R.drawable.ic_location
+
+    val Menu = R.drawable.ic_menu
+    val Message = R.drawable.ic_message
+
+    val Notification = R.drawable.ic_notification
+
+    val Pen = R.drawable.ic_edit2
+
+    val Search = R.drawable.ic_search
+    val Settings = R.drawable.ic_settings
+    val Share = R.drawable.ic_share
+    val Star = R.drawable.ic_star
+    val Shopping = R.drawable.ic_shopping
 }
 
 @Preview
@@ -42,9 +64,20 @@ private fun MIconsPreview() {
         MIcons.Image,
         MIcons.Add,
         MIcons.Edit,
-        MIcons.Edit1,
-        MIcons.Edit2,
-        MIcons.Edit3
+        MIcons.Account,
+        MIcons.Comment,
+        MIcons.Draw,
+        MIcons.Favourite,
+        MIcons.Link,
+        MIcons.Location,
+        MIcons.Menu,
+        MIcons.Pen,
+        MIcons.Share,
+        MIcons.Star,
+        MIcons.Message,
+        MIcons.Internet,
+        MIcons.Home,
+        MIcons.Shopping,
     )
     PreviewBox {
         LazyVerticalGrid(
