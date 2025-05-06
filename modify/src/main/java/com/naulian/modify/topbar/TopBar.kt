@@ -9,6 +9,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
@@ -17,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import com.naulian.modify.Preview
-import androidx.compose.material3.TopAppBar as M3TopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -31,7 +31,7 @@ fun MTopAppBar(
     color: Color = MaterialTheme.colorScheme.background,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
-    M3TopAppBar(
+    TopAppBar(
         title = { Text(text = title) },
         modifier = modifier,
         navigationIcon = {

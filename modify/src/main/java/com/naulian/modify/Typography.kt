@@ -6,8 +6,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+
+object Fonts {
+    val JetBrainsMono = FontFamily(Font(R.font.jetbrains_mono))
+}
 
 val TextStyle.Thin get() = copy(fontWeight = FontWeight.Thin)
 val TextStyle.ExtraLight get() = copy(fontWeight = FontWeight.ExtraLight)
