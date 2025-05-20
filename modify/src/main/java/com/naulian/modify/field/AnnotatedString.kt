@@ -10,9 +10,11 @@ import androidx.compose.ui.text.withLink
 
 fun AnnotatedString.Builder.appendClickable(
     text: String,
+    color: Color = Color.Blue,
+    fontWeight: FontWeight = FontWeight.Bold,
     spanStyle: SpanStyle = SpanStyle(
-        color = Color.Blue,
-        fontWeight = FontWeight.Bold
+        color = color,
+        fontWeight = fontWeight
     ),
     onClick: (String) -> Unit
 ) {
@@ -29,9 +31,11 @@ fun AnnotatedString.Builder.appendClickable(
 fun AnnotatedString.Builder.appendLink(
     text: String,
     url : String,
+    color: Color = Color.Blue,
+    fontWeight: FontWeight = FontWeight.Bold,
     spanStyle: SpanStyle = SpanStyle(
-        color = Color.Blue,
-        fontWeight = FontWeight.Bold
+        color = color,
+        fontWeight = fontWeight
     ),
     onClick: (String) -> Unit
 ) {

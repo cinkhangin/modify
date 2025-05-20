@@ -4,8 +4,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -84,9 +86,10 @@ private fun MIconsPreview() {
             columns = GridCells.Adaptive(48.dp)
         ) {
             items(iconList) {
-                MIcon(
+                Icon(
+                    painter = painterResource(it),
                     modifier = Modifier.padding(12.dp),
-                    drawableId = it
+                    contentDescription = null
                 )
             }
         }

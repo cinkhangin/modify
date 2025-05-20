@@ -7,11 +7,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -25,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -64,7 +67,7 @@ fun MultiSwitch(
     }
 
     val extraThumbSize by rememberDerivedState {
-        if(showName) textWidth + horizontalItemPadding else 0.dp
+        if (showName) textWidth + horizontalItemPadding else 0.dp
     }
 
     val offset by animateFloatAsState(
@@ -104,15 +107,17 @@ fun MultiSwitch(
                         .noRippleClick { onCheckedChange(index) },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    DrawableIcon(
-                        modifier = Modifier.padding(4.dp),
-                        drawableId = item.icon,
-                        iconSize = 16.dp,
+                    Icon(
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .size(16.dp),
+                        painter = painterResource(item.icon),
+                        contentDescription = null,
                         tint = if (index == currentIndex) activeIconColor else normalIconColor
                     )
 
                     if (showName) {
-                        HorizontalSpace(width = horizontalItemPadding)
+                        Spacer(modifier = Modifier.width(horizontalItemPadding))
                         Text(
                             modifier = Modifier.width(textWidth),
                             text = item.name.take(7),
