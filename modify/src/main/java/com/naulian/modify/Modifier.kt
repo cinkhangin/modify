@@ -95,7 +95,7 @@ val TextFieldState.string get() = text.toString()
 @SuppressLint("ComposableNaming")
 @Composable
 fun Modifier.If(condition: Boolean, modifier: @Composable Modifier.() -> Modifier): Modifier {
-    return if (condition) this.then(this.modifier()) else this
+    return if (condition) this then Modifier.modifier() else this
 }
 
 @Preview
@@ -104,8 +104,8 @@ private fun IfTest() {
     Box(modifier = Modifier
         .size(100.dp)
         .background(Color.Blue)
-        .If(false) {
-            padding(20.dp).background(Color.Red)
+        .If(true) {
+            padding(10.dp).background(Color.Red)
         }
         .padding(10.dp)
         .background(Color.Green))
