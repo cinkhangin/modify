@@ -10,9 +10,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlin.annotation.AnnotationTarget.ANNOTATION_CLASS
+import kotlin.annotation.AnnotationTarget.CLASS
+import kotlin.annotation.AnnotationTarget.CONSTRUCTOR
+import kotlin.annotation.AnnotationTarget.FUNCTION
+import kotlin.annotation.AnnotationTarget.PROPERTY
+import kotlin.annotation.AnnotationTarget.PROPERTY_GETTER
+import kotlin.annotation.AnnotationTarget.PROPERTY_SETTER
+import kotlin.annotation.AnnotationTarget.TYPEALIAS
 
-//MIcons icons are from hugeicons.com
-object MIcons {
+@Target(CLASS, FUNCTION, PROPERTY, ANNOTATION_CLASS, CONSTRUCTOR, PROPERTY_SETTER, PROPERTY_GETTER, TYPEALIAS)
+annotation class DeprecatedIn(val value: String)
+
+@Deprecated(message = "Use HugeIcons instead")
+@DeprecatedIn("2025-07-01")
+typealias MIcons = HugeIcons
+
+
+object HugeIcons {
     val Account = R.drawable.ic_account
     val Add = R.drawable.ic_add
 
@@ -45,6 +60,7 @@ object MIcons {
     val Pen = R.drawable.ic_edit2
 
     val Search = R.drawable.ic_search
+    val Send = R.drawable.ic_sent
     val Settings = R.drawable.ic_settings
     val Share = R.drawable.ic_share
     val Star = R.drawable.ic_star
@@ -53,33 +69,34 @@ object MIcons {
 
 @Preview
 @Composable
-private fun MIconsPreview() {
+private fun HugeIconsPreview() {
 
     val iconList = listOf(
-        MIcons.Copy,
-        MIcons.Back,
-        MIcons.Cancel,
-        MIcons.Delete,
-        MIcons.Settings,
-        MIcons.Search,
-        MIcons.Notification,
-        MIcons.Image,
-        MIcons.Add,
-        MIcons.Edit,
-        MIcons.Account,
-        MIcons.Comment,
-        MIcons.Draw,
-        MIcons.Favourite,
-        MIcons.Link,
-        MIcons.Location,
-        MIcons.Menu,
-        MIcons.Pen,
-        MIcons.Share,
-        MIcons.Star,
-        MIcons.Message,
-        MIcons.Internet,
-        MIcons.Home,
-        MIcons.Shopping,
+        HugeIcons.Copy,
+        HugeIcons.Back,
+        HugeIcons.Cancel,
+        HugeIcons.Delete,
+        HugeIcons.Settings,
+        HugeIcons.Search,
+        HugeIcons.Notification,
+        HugeIcons.Image,
+        HugeIcons.Add,
+        HugeIcons.Edit,
+        HugeIcons.Account,
+        HugeIcons.Comment,
+        HugeIcons.Draw,
+        HugeIcons.Favourite,
+        HugeIcons.Link,
+        HugeIcons.Location,
+        HugeIcons.Menu,
+        HugeIcons.Pen,
+        HugeIcons.Share,
+        HugeIcons.Send,
+        HugeIcons.Star,
+        HugeIcons.Message,
+        HugeIcons.Internet,
+        HugeIcons.Home,
+        HugeIcons.Shopping,
     )
     PreviewBox {
         LazyVerticalGrid(

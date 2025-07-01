@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 data class MultiSwitchItem(
     val id: String = "",
     val name: String = "",
-    @DrawableRes val icon: Int = 0,
+    @param:DrawableRes val icon: Int = 0,
 )
 
 @Composable
@@ -136,9 +136,9 @@ fun MultiSwitch(
 private fun ThemeSwitchPreview() {
     val items by rememberDataState(
         listOf(
-            MultiSwitchItem(id = "1", name = "Post", icon = MIcons.Back),
-            MultiSwitchItem(id = "2", name = "Home", icon = MIcons.Copy),
-            MultiSwitchItem(id = "3", name = "Profile", icon = MIcons.Cancel)
+            MultiSwitchItem(id = "1", name = "Post", icon = HugeIcons.Back),
+            MultiSwitchItem(id = "2", name = "Home", icon = HugeIcons.Copy),
+            MultiSwitchItem(id = "3", name = "Profile", icon = HugeIcons.Cancel)
         )
     )
 

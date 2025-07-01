@@ -1,11 +1,16 @@
 [versions]
 activityCompose = "1.10.1"
-appcompat = "1.7.0"
-composeBom = "2025.05.00"
+appcompat = "1.7.1"
+composeBom = "2025.06.01"
 coreKtx = "1.16.0"
 espressoCore = "3.6.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
+
+# plugin
+kotlin = "2.2.0"
+agp = "8.11.0"
+vanniktech = "0.33.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -25,4 +30,9 @@ compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
 [plugins]
+application = { id = "com.android.application", version.ref = "agp" }
+library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+vanniktech-maven = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech" }
 

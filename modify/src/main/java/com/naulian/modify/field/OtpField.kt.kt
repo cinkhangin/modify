@@ -14,8 +14,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.foundation.text.input.TextFieldLineLimits
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -27,6 +31,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource.Companion.SideEffect
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -36,10 +41,10 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MOtpField(
     modifier: Modifier = Modifier,
-    input: String,
+    state : TextFieldState,
     error: Boolean = false,
-    onValueChanged: (String) -> Unit = {},
     inputCount: Int = 6,
+    focusOnStart : Boolean = true,
     focusRequester: FocusRequester = FocusRequester(),
     style: TextStyle = MaterialTheme.typography.titleLarge,
     textColor: Color = MaterialTheme.colorScheme.onBackground,
@@ -50,6 +55,12 @@ fun MOtpField(
 
     var inFocus by remember { mutableStateOf(false) }
 
+    SideEffect {
+        if(focusOnStart){
+            focusRequester.requestFocus()
+        }
+    }
+
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -57,16 +68,18 @@ fun MOtpField(
         contentAlignment = Alignment.CenterStart
     ) {
         BasicTextField(
-            value = input,
+            state = state,
             modifier = Modifier
                 .focusRequester(focusRequester)
                 .onFocusChanged { focusState ->
                     inFocus = focusState.hasFocus
                 },
-            onValueChange = onValueChanged,
-            singleLine = true,
+            lineLimits = TextFieldLineLimits.SingleLine,
+            inputTransformation = InputTransformation {
+                if (length > inputCount) originalText.subSequence(0, inputCount) else originalText
+            },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            decorationBox = { it() }
+            decorator = {}
         )
 
         Row(horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
@@ -74,7 +87,7 @@ fun MOtpField(
                 CharField(
                     modifier = Modifier.weight(1f),
                     index = index,
-                    text = input,
+                    text = state.text,
                     error = error,
                     style = style,
                     inFocus = inFocus,
@@ -134,6 +147,6 @@ private fun CharField(
 @Composable
 private fun MOtpFieldPreview() {
     com.naulian.modify.Preview {
-        MOtpField(input = "123456")
+        MOtpField(state = TextFieldState("123456"))
     }
 }
