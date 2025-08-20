@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -74,6 +75,9 @@ fun MainContent() {
         FocusRequester()
     }
 
+    var showSheet by remember { mutableStateOf(false) }
+
+
     LaunchedEffect(Unit) {
         delay(10000)
         focusRequester.requestFocus()
@@ -118,6 +122,14 @@ fun MainContent() {
                 )
             }
         }
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                showSheet = !showSheet
+            }) {
+            Text(text = "Show/Hide Bottom Sheet")
+        }
     }
 
     if (showBrowser) {
@@ -128,22 +140,9 @@ fun MainContent() {
         )
     }
 
-
-    var showSheet by remember { mutableStateOf(false) }
-
-    LaunchedEffect(Unit) {
-        delay(3000)
-        showSheet = true
-
-        delay(3000)
-        showSheet = false
-
-        delay(3000)
-        showSheet = true
-    }
-
     BottomSheet(
-        show = showSheet
+        show = showSheet,
+        onDismissRequest = { showSheet = false }
     ) {
         Box(
             modifier = Modifier

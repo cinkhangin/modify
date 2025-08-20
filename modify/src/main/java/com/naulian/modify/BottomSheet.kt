@@ -12,11 +12,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 
@@ -24,6 +26,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun BottomSheet(
     show: Boolean,
+    onDismissRequest: () -> Unit,
     sheetState: SheetState = rememberModalBottomSheetState(),
     shape: Shape = BottomSheetDefaults.ExpandedShape,
     containerColor: Color = BottomSheetDefaults.ContainerColor,
@@ -34,25 +37,26 @@ fun BottomSheet(
     content: @Composable ColumnScope.() -> Unit
 ) {
 
-    var showSheet by remember { mutableStateOf(false) }
-    val onDismiss: () -> Unit = {
-        showSheet = false
-    }
+    var openBottomSheet by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
 
-    LaunchedEffect(show) {
-        if (show) {
-            showSheet = true
-            sheetState.show()
-        } else {
-            launch { sheetState.hide() }
-                .invokeOnCompletion { onDismiss() }
+    val onDismiss: () -> Unit = {
+        coroutineScope.launch {
+            sheetState.hide()
+        }.invokeOnCompletion {
+            openBottomSheet = false
         }
     }
 
-    if (showSheet) {
+    LaunchedEffect(show) {
+        if (show) openBottomSheet = true
+        else onDismiss()
+    }
+
+    if (openBottomSheet) {
         ModalBottomSheet(
             sheetState = sheetState,
-            onDismissRequest = onDismiss,
+            onDismissRequest = onDismissRequest,
             shape = shape,
             containerColor = containerColor,
             contentColor = contentColor,
