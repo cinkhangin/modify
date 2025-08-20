@@ -4,8 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -29,11 +32,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.modify.ui.theme.ModifyTheme
+import com.naulian.modify.Gray
 import com.naulian.modify.HugeIcons
-import com.naulian.modify.field.MTextField
-import com.naulian.modify.table.MTable
+import com.naulian.modify.BottomSheet
+import com.naulian.modify.field.TextField
+import com.naulian.modify.table.Table
 import com.naulian.modify.themeColors
-import com.naulian.modify.web.MBrowser
+import com.naulian.modify.web.Browser
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
@@ -92,11 +97,11 @@ fun MainContent() {
             )
         }
 
-        MTable(modifier = Modifier.padding(12.dp), data = data) {
+        Table(modifier = Modifier.padding(12.dp), data = data) {
             Text(modifier = Modifier.padding(horizontal = 10.dp), text = it)
         }
 
-        MTextField(
+        TextField(
             modifier = Modifier.fillMaxWidth(),
             state = textFieldState,
             focusRequester = focusRequester
@@ -116,10 +121,35 @@ fun MainContent() {
     }
 
     if (showBrowser) {
-        MBrowser(
+        Browser(
             url = "www.google.com",
             onUrlLoad = {},
             onLoading = {}
+        )
+    }
+
+
+    var showSheet by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        delay(3000)
+        showSheet = true
+
+        delay(3000)
+        showSheet = false
+
+        delay(3000)
+        showSheet = true
+    }
+
+    BottomSheet(
+        show = showSheet
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1f)
+                .background(Gray)
         )
     }
 }

@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.naulian.modify.Preview
 
 @Composable
-fun <T> MTable(
+fun <T> Table(
     modifier: Modifier = Modifier,
     data: List<List<T>>,
     rowHeight: Dp = 40.dp,
@@ -41,7 +41,7 @@ fun <T> MTable(
         )
     ) {
         for (i in data.indices) {
-            MTableRow(row = data[i], rowHeight = rowHeight) { cell ->
+            TableRow(row = data[i], rowHeight = rowHeight) { cell ->
                 TableCell(modifier = Modifier.weight(1f), item = cell) {
                     cell(it)
                 }
@@ -54,7 +54,7 @@ fun <T> MTable(
 }
 
 @Composable
-fun <T> MTableRow(
+fun <T> TableRow(
     modifier: Modifier = Modifier,
     row: List<T>,
     rowHeight: Dp = 40.dp,
@@ -103,7 +103,7 @@ fun LazyTablePreview() {
     )
 
     Preview {
-        MTable(modifier = Modifier.padding(12.dp), data = data) {
+        Table(modifier = Modifier.padding(12.dp), data = data) {
             Text(modifier = Modifier.padding(horizontal = 10.dp), text = it)
         }
     }

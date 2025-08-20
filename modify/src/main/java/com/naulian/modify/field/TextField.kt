@@ -35,7 +35,7 @@ import com.naulian.modify.PreviewScreen
 import com.naulian.modify.rememberBooleanState
 
 @Composable
-fun MBasicTextField(
+fun BasicTextField(
     modifier: Modifier = Modifier,
     state: TextFieldState,
     enabled: Boolean = true,
@@ -72,7 +72,7 @@ fun MBasicTextField(
 
 
 @Composable
-fun MTextField(
+fun TextField(
     modifier: Modifier = Modifier,
     textColor: Color = MaterialTheme.colorScheme.onBackground,
     containerColor: Color = MaterialTheme.colorScheme.background,
@@ -125,7 +125,7 @@ fun MTextField(
 
 @Preview
 @Composable
-private fun MeoTextFieldPreview() {
+private fun TextFieldPreview() {
     PreviewScreen {
         Column(
             modifier = Modifier
@@ -134,8 +134,8 @@ private fun MeoTextFieldPreview() {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            MBasicTextField(state = TextFieldState(""))
-            MTextField(state = TextFieldState("hello"))
+            com.naulian.modify.field.BasicTextField(state = TextFieldState(""))
+            TextField(state = TextFieldState("hello"))
         }
     }
 }
