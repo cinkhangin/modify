@@ -57,7 +57,7 @@ fun BasicTextField(
         state = state,
         decorator = {
             if (state.text.isEmpty() && !onFocus) {
-                Text(text = placeHolder, style = textStyle.copy(color = textStyle.color.copy(alpha = 0.6f)))
+                Text(text = placeHolder, style = textStyle.copy(color = textColor.copy(alpha = 0.6f)))
             } else it()
         },
         enabled = enabled,
@@ -123,6 +123,10 @@ fun TextField(
     )
 }
 
+fun TextFieldState.setText(text : String){
+    edit { replace(0, length, text) }
+}
+
 @Preview
 @Composable
 private fun TextFieldPreview() {
@@ -134,7 +138,7 @@ private fun TextFieldPreview() {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            com.naulian.modify.field.BasicTextField(state = TextFieldState(""))
+            BasicTextField(state = TextFieldState(""))
             TextField(state = TextFieldState("hello"))
         }
     }

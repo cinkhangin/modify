@@ -36,9 +36,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.naulian.modify.Preview
 
 @Composable
-fun MOtpField(
+fun OtpField(
     modifier: Modifier = Modifier,
     state : TextFieldState,
     error: Boolean = false,
@@ -144,8 +145,8 @@ private fun CharField(
 
 @Preview
 @Composable
-private fun MOtpFieldPreview() {
-    com.naulian.modify.Preview {
-        MOtpField(state = TextFieldState("123456"))
+private fun OtpFieldPreview() {
+    Preview {
+        OtpField(state = TextFieldState("123456"))
     }
 }
