@@ -127,6 +127,10 @@ fun TextFieldState.setText(text : String){
     edit { replace(0, length, text) }
 }
 
+fun TextFieldState.appendText(text: String) {
+    edit { append(text) }
+}
+
 @Preview
 @Composable
 private fun TextFieldPreview() {

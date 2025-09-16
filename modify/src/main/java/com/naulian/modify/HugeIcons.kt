@@ -42,7 +42,9 @@ object HugeIcons {
     val Account = R.drawable.ic_account
     val Add = R.drawable.ic_add
 
-    val Back = R.drawable.ic_back
+    val Back = R.drawable.ic_arrow_left
+    val Back2 = R.drawable.ic_chevron_left
+
 
     val Close = R.drawable.ic_cancel
     val Cancel = Close
@@ -87,6 +89,7 @@ object HugeIcons {
         listOf(
             Copy,
             Back,
+            Back2,
             Cancel,
             Delete,
             Dollar,

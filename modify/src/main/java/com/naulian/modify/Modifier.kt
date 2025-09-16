@@ -126,11 +126,6 @@ private fun IfTest() {
         .background(Color.Green))
 }
 
-@Composable
-fun IfNotEmpty(string: String, block: @Composable (String) -> Unit) {
-    if (string.isNotEmpty()) block(string)
-}
-
 
 fun Modifier.touchIndicator(scaleTo: Float = 1.2f, action: (Boolean) -> Unit = {}) = composed {
     var targetScale by remember { mutableFloatStateOf(1f) }

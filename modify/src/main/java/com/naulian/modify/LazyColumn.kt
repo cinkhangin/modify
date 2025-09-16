@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,7 +34,6 @@ import androidx.compose.ui.unit.dp
  * World
  * ```
  * */
-@ExperimentalModifyApi
 inline fun LazyListScope.columnItem(
     key: Any? = null,
     contentType: Any? = null,
@@ -64,7 +64,6 @@ inline fun LazyListScope.columnItem(
  * HelloWorld
  * ```
  * */
-@ExperimentalModifyApi
 inline fun LazyListScope.rowItem(
     key: Any? = null,
     contentType: Any? = null,
@@ -97,7 +96,6 @@ inline fun LazyListScope.rowItem(
  *                                        Hello World
  * ```
  * */
-@ExperimentalModifyApi
 inline fun LazyListScope.boxItem(
     key: Any? = null,
     contentType: Any? = null,
@@ -121,7 +119,9 @@ inline fun <T> LazyListScope.itemsWithDivider(
     items: List<T>,
     noinline key: ((item: T) -> Any)? = null,
     noinline contentType: (item: T) -> Any? = { null },
-    noinline divider: @Composable (() -> Unit)? = null,
+    noinline divider: @Composable (() -> Unit) = {
+        HorizontalDivider()
+    },
     crossinline itemContent: @Composable LazyItemScope.(item: T) -> Unit
 ) = items(
     count = items.size,
@@ -131,11 +131,10 @@ inline fun <T> LazyListScope.itemsWithDivider(
     itemContent(items[it])
 
     if (it < items.lastIndex) {
-        divider?.invoke()
+        divider.invoke()
     }
 }
 
-@OptIn(ExperimentalModifyApi::class)
 @Preview
 @Composable
 private fun LazyColumnItemPreview() {
