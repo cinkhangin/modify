@@ -44,12 +44,13 @@ object HugeIcons {
 
     val Back = R.drawable.ic_arrow_left
     val Back2 = R.drawable.ic_chevron_left
-
+    val Bookmark = R.drawable.ic_bookmark
 
     val Close = R.drawable.ic_cancel
     val Cancel = Close
     val Comment = R.drawable.ic_comment
     val Copy = R.drawable.ic_copy
+    val Cursor = R.drawable.ic_cursor
 
     val Delete = R.drawable.ic_delete
     val Dollar = R.drawable.ic_dollar
@@ -69,12 +70,15 @@ object HugeIcons {
     val Link = R.drawable.ic_link
     val Location = R.drawable.ic_location
     val Lock = R.drawable.ic_lock
+    val Logout = R.drawable.ic_logout
 
+    val Mail = R.drawable.ic_mail
     val Menu = R.drawable.ic_menu
     val Message = R.drawable.ic_message
 
     val Notification = R.drawable.ic_notification
 
+    val Paste= R.drawable.ic_paste
     val Pen = R.drawable.ic_edit2
     val Printer = R.drawable.ic_printer
 
@@ -82,42 +86,47 @@ object HugeIcons {
     val Send = R.drawable.ic_sent
     val Settings = R.drawable.ic_settings
     val Share = R.drawable.ic_share
-    val Star = R.drawable.ic_star
     val Shopping = R.drawable.ic_shopping
+    val Star = R.drawable.ic_star
 
     val all by lazy {
         listOf(
-            Copy,
+            Account,
+            Add,
             Back,
             Back2,
+            Bookmark,
             Cancel,
+            Comment,
+            Copy,
+            Cursor,
             Delete,
             Dollar,
             Done,
-            Settings,
-            Search,
-            Notification,
-            Image,
-            Add,
-            Edit,
-            Account,
-            Comment,
             Draw,
+            Edit,
             Favourite,
+            Folder,
+            Home,
+            Image,
+            Internet,
             Link,
             Location,
-            Menu,
-            Pen,
-            Share,
-            Send,
-            Star,
-            Message,
-            Internet,
-            Home,
-            Shopping,
-            Printer,
-            Folder,
             Lock,
+            Logout,
+            Mail,
+            Menu,
+            Message,
+            Notification,
+            Paste,
+            Pen,
+            Printer,
+            Search,
+            Send,
+            Settings,
+            Share,
+            Shopping,
+            Star,
         )
     }
 }
@@ -125,7 +134,6 @@ object HugeIcons {
 @Preview
 @Composable
 private fun HugeIconsPreview() {
-
     PreviewBox {
         LazyVerticalGrid(
             columns = GridCells.Adaptive(48.dp)
