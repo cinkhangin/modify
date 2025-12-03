@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -99,18 +96,20 @@ private fun IconTextPreview() {
     ) {
 
         IconText(
-            painter = rememberVectorPainter(Icons.Default.Info),
-            text = "Information"
+            painter = painterResource(HugeIcons.Settings),
+            text = "Settings",
+            iconTint = Black
         )
 
         IconText(
-            painter = rememberVectorPainter(Icons.Rounded.Email),
+            painter = painterResource(HugeIcons.Mail),
             text = buildAnnotatedString {
                 withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                    append("username")
+                    append("modify")
                 }
-                append("@codigo.co")
-            }
+                append("@naulian.com")
+            },
+            iconTint = Black
         )
     }
 }

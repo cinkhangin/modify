@@ -76,10 +76,14 @@ object HugeIcons {
     val Menu = R.drawable.ic_menu
     val Message = R.drawable.ic_message
 
+    val Next = R.drawable.ic_next
     val Notification = R.drawable.ic_notification
 
     val Paste= R.drawable.ic_paste
+    val Pause = R.drawable.ic_pause
     val Pen = R.drawable.ic_edit2
+    val Play = R.drawable.ic_play
+    val Previous = R.drawable.ic_previous
     val Printer = R.drawable.ic_printer
 
     val Search = R.drawable.ic_search
@@ -88,6 +92,7 @@ object HugeIcons {
     val Share = R.drawable.ic_share
     val Shopping = R.drawable.ic_shopping
     val Star = R.drawable.ic_star
+    val Stop = R.drawable.ic_stop
 
     val all by lazy {
         listOf(
@@ -117,9 +122,13 @@ object HugeIcons {
             Mail,
             Menu,
             Message,
+            Next,
             Notification,
             Paste,
+            Pause,
             Pen,
+            Play,
+            Previous,
             Printer,
             Search,
             Send,
@@ -127,6 +136,7 @@ object HugeIcons {
             Share,
             Shopping,
             Star,
+            Stop,
         )
     }
 }
