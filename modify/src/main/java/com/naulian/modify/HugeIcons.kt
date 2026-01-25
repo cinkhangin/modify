@@ -18,7 +18,6 @@ import kotlin.annotation.AnnotationTarget.PROPERTY
 import kotlin.annotation.AnnotationTarget.PROPERTY_GETTER
 import kotlin.annotation.AnnotationTarget.PROPERTY_SETTER
 import kotlin.annotation.AnnotationTarget.TYPEALIAS
-import kotlin.collections.listOf
 
 @Target(
     CLASS,
@@ -41,6 +40,8 @@ typealias MIcons = HugeIcons
 object HugeIcons {
     val Account = R.drawable.ic_account
     val Add = R.drawable.ic_add
+    val AI = R.drawable.ic_ai
+    val Alert = R.drawable.ic_alert
 
     val Back = R.drawable.ic_arrow_left
     val Back2 = R.drawable.ic_chevron_left
@@ -65,6 +66,7 @@ object HugeIcons {
     val Home = R.drawable.ic_home
 
     val Image = R.drawable.ic_image
+    val Info = R.drawable.ic_information
     val Internet = R.drawable.ic_internet
 
     val Link = R.drawable.ic_link
@@ -83,12 +85,15 @@ object HugeIcons {
     val Pause = R.drawable.ic_pause
     val Pen = R.drawable.ic_edit2
     val Play = R.drawable.ic_play
+    val Playstore = R.drawable.ic_play_store
     val Previous = R.drawable.ic_previous
     val Printer = R.drawable.ic_printer
 
+    val Save = R.drawable.ic_save
     val Search = R.drawable.ic_search
     val Send = R.drawable.ic_sent
     val Settings = R.drawable.ic_settings
+    val Settings2 = R.drawable.ic_settings_2
     val Share = R.drawable.ic_share
     val Shopping = R.drawable.ic_shopping
     val Star = R.drawable.ic_star
@@ -98,6 +103,8 @@ object HugeIcons {
         listOf(
             Account,
             Add,
+            AI,
+            Alert,
             Back,
             Back2,
             Bookmark,
@@ -128,11 +135,14 @@ object HugeIcons {
             Pause,
             Pen,
             Play,
+            Playstore,
             Previous,
             Printer,
+            Save,
             Search,
             Send,
             Settings,
+            Settings2,
             Share,
             Shopping,
             Star,

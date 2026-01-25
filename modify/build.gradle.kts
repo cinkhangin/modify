@@ -69,14 +69,14 @@ dependencies {
 }
 
 mavenPublishing {
-    publishToMavenCentral( automaticRelease = true)
+    publishToMavenCentral(automaticRelease = true)
 
     signAllPublications()
 
     coordinates(
         groupId = "com.naulian",
         artifactId = "modify",
-        version = "0.8.1"
+        version = "0.8.3"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
