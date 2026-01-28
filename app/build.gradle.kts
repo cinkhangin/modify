@@ -1,12 +1,11 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import com.android.build.api.dsl.ApplicationExtension
 
 plugins {
     alias(libs.plugins.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
 
-android {
+extensions.configure<ApplicationExtension>("android") {
     namespace = "com.example.modify"
     compileSdk = 36
 
@@ -42,12 +41,6 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-    }
-}
-
-kotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 

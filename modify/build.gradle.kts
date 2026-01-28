@@ -1,13 +1,14 @@
+import com.android.build.api.dsl.LibraryExtension
+import org.gradle.kotlin.dsl.support.kotlinCompilerOptions
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.vanniktech.maven)
 }
 
-android {
+extensions.configure<LibraryExtension>("android") {
     namespace = "com.naulian.modify"
     compileSdk = 36
 
@@ -27,6 +28,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -40,12 +42,6 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-    }
-}
-
-kotlin {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
@@ -76,7 +72,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.naulian",
         artifactId = "modify",
-        version = "0.8.3"
+        version = "0.8.4"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 

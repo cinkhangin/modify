@@ -81,18 +81,17 @@ fun Modifier.dashedBorder(
         pathClip = when (outline) {
             is Outline.Rounded -> Path().apply { addRoundRect(outline.roundRect) }
             is Outline.Generic -> outline.path
-            else -> null
         }
 
-        insetPath = when {
-            insetOutline is Outline.Rounded && !insetOutline.roundRect.isSimple -> {
+        insetPath = when (insetOutline) {
+            is Outline.Rounded if !insetOutline.roundRect.isSimple -> {
                 Path().apply {
                     addRoundRect(insetOutline.roundRect)
                     translate(Offset(inset, inset))
                 }
             }
 
-            insetOutline is Outline.Generic -> {
+            is Outline.Generic -> {
                 Path().apply { addPath(insetOutline.path, Offset(inset, inset)) }
             }
 
@@ -157,7 +156,7 @@ fun Modifier.dashedBorder(
 private fun DashBorderPreview() {
     PreviewRow(
         modifier = Modifier
-            .background(White)
+            .background(Color.White)
             .padding(20.dp),
         horizontalArrangement = Arrangement.spacedBy(20.dp)
     ) {
@@ -166,7 +165,7 @@ private fun DashBorderPreview() {
         Box(
             modifier = Modifier
                 .size(100.dp)
-                .background(White)
+                .background(Color.White)
                 .dashedBorder(
                     width = 4.dp,
                     brush = Brush.linearGradient(
@@ -184,9 +183,9 @@ private fun DashBorderPreview() {
         Box(
             modifier = Modifier
                 .size(100.dp)
-                .background(White)
+                .background(Color.White)
                 .dashedBorder(
-                    border = BorderStroke(width = 4.dp, color = Black),
+                    border = BorderStroke(width = 4.dp, color = Color.Black),
                     shape = CircleShape,
                     on = 8.dp,
                     off = 8.dp
@@ -196,10 +195,10 @@ private fun DashBorderPreview() {
         Box(
             modifier = Modifier
                 .size(100.dp)
-                .background(White)
+                .background(Color.White)
                 .dashedBorder(
                     width = 4.dp,
-                    color = Black,
+                    color = Color.Black,
                     shape = RoundedCornerShape(20.dp),
                     on = 8.dp,
                     off = 8.dp
