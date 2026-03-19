@@ -1,15 +1,11 @@
-import com.android.build.api.dsl.LibraryExtension
-import org.gradle.kotlin.dsl.support.kotlinCompilerOptions
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.vanniktech.maven)
 }
 
-extensions.configure<LibraryExtension>("android") {
-    namespace = "com.naulian.modify"
+android {
+    namespace = "com.ckgin.modify"
     compileSdk = 36
 
     defaultConfig {
@@ -70,9 +66,9 @@ mavenPublishing {
     signAllPublications()
 
     coordinates(
-        groupId = "com.naulian",
+        groupId = "com.ckgin",
         artifactId = "modify",
-        version = "0.8.4"
+        version = "1.0.0-alpha01"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
@@ -90,10 +86,10 @@ mavenPublishing {
         }
         developers {
             developer {
-                id.set("naulian")
-                name.set("Naulian")
+                id.set("ckgin")
+                name.set("Cin Khin Gin")
                 url.set("https://github.com/cinkhangin/")
-                email.set("hello@naulian.com")
+                email.set("cinkhangin@gmail.com")
             }
         }
         scm {

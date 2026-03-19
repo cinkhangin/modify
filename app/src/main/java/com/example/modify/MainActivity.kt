@@ -29,17 +29,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.modify.ui.theme.ModifyTheme
-import com.naulian.modify.Gray
-import com.naulian.modify.HugeIcons
-import com.naulian.modify.BottomSheet
-import com.naulian.modify.field.TextField
-import com.naulian.modify.table.Table
-import com.naulian.modify.themeColors
-import com.naulian.modify.web.Browser
+import com.ckgin.modify.Gray
+import com.ckgin.modify.HugeIcons
+import com.ckgin.modify.BottomSheet
+import com.ckgin.modify.field.TextField
+import com.ckgin.modify.table.Table
+import com.ckgin.modify.themeColors
+import com.ckgin.modify.web.Browser
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
@@ -148,7 +149,7 @@ fun MainContent() {
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(1f)
-                .background(Gray)
+                .background(Color.Gray)
         )
     }
 }

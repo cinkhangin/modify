@@ -1,11 +1,9 @@
-import com.android.build.api.dsl.ApplicationExtension
-
 plugins {
     alias(libs.plugins.application)
     alias(libs.plugins.kotlin.compose)
 }
 
-extensions.configure<ApplicationExtension>("android") {
+android {
     namespace = "com.example.modify"
     compileSdk = 36
 
