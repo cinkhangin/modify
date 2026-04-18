@@ -1,41 +1,46 @@
 package com.ckgin.modify
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlin.annotation.AnnotationTarget.ANNOTATION_CLASS
-import kotlin.annotation.AnnotationTarget.CLASS
-import kotlin.annotation.AnnotationTarget.CONSTRUCTOR
-import kotlin.annotation.AnnotationTarget.FUNCTION
-import kotlin.annotation.AnnotationTarget.PROPERTY
-import kotlin.annotation.AnnotationTarget.PROPERTY_GETTER
-import kotlin.annotation.AnnotationTarget.PROPERTY_SETTER
-import kotlin.annotation.AnnotationTarget.TYPEALIAS
 
-@Target(
-    CLASS,
-    FUNCTION,
-    PROPERTY,
-    ANNOTATION_CLASS,
-    CONSTRUCTOR,
-    PROPERTY_SETTER,
-    PROPERTY_GETTER,
-    TYPEALIAS
-)
-annotation class DeprecatedIn(val value: String)
 
-@Deprecated(message = "Use HugeIcons instead")
-@DeprecatedIn("2025-07-01")
-@Suppress("unused")
-typealias MIcons = HugeIcons
+@Composable
+fun DrawableIcon(
+    @DrawableRes icon: Int,
+    modifier: Modifier = Modifier,
+    contentDescription: String? = null,
+    tint: Color = LocalContentColor.current,
+) {
+    Icon(
+        painter = painterResource(icon),
+        contentDescription = contentDescription,
+        modifier = modifier,
+        tint = tint,
+    )
+}
 
+@Preview
+@Composable
+private fun HugeIconPreview() {
+    PreviewBox {
+        DrawableIcon(
+            icon = HugeIcons.Account,
+            contentDescription = null,
+            modifier = Modifier.padding(12.dp)
+        )
+    }
+}
 
 object HugeIcons {
     val Account = R.drawable.ic_account
@@ -46,9 +51,11 @@ object HugeIcons {
     val Back = R.drawable.ic_arrow_left
     val Back2 = R.drawable.ic_chevron_left
     val Bookmark = R.drawable.ic_bookmark
+    val Bookmark2 = R.drawable.ic_bookmark2
 
     val Close = R.drawable.ic_cancel
     val Cancel = Close
+    val Champion = R.drawable.ic_champion
     val Comment = R.drawable.ic_comment
     val Copy = R.drawable.ic_copy
     val Cursor = R.drawable.ic_cursor
@@ -59,9 +66,14 @@ object HugeIcons {
     val Draw = R.drawable.ic_draw
 
     val Edit = R.drawable.ic_pencil2
+    val Eye = R.drawable.ic_eye
+    val EyeOff = R.drawable.ic_eye_off
+    val EyeOff2 = R.drawable.ic_eye_off2
 
     val Favourite = R.drawable.ic_favourite
     val Folder = R.drawable.ic_folder
+
+    val Gift = R.drawable.ic_gift
 
     val Home = R.drawable.ic_home
 
@@ -81,7 +93,7 @@ object HugeIcons {
     val Next = R.drawable.ic_next
     val Notification = R.drawable.ic_notification
 
-    val Paste= R.drawable.ic_paste
+    val Paste = R.drawable.ic_paste
     val Pause = R.drawable.ic_pause
     val Pen = R.drawable.ic_edit2
     val Play = R.drawable.ic_play
@@ -108,7 +120,9 @@ object HugeIcons {
             Back,
             Back2,
             Bookmark,
+            Bookmark2,
             Cancel,
+            Champion,
             Comment,
             Copy,
             Cursor,
@@ -117,10 +131,15 @@ object HugeIcons {
             Done,
             Draw,
             Edit,
+            Eye,
+            EyeOff,
+            EyeOff2,
             Favourite,
             Folder,
+            Gift,
             Home,
             Image,
+            Info,
             Internet,
             Link,
             Location,

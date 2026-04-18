@@ -156,7 +156,7 @@ fun Modifier.touchIndicator(scaleTo: Float = 1.2f, action: (Boolean) -> Unit = {
 private fun TouchIndicatorPreview() {
     MaterialTheme {
         Box(modifier = Modifier.Companion
-            .background(White)
+            .background(Color.White)
             .padding(20.dp)) {
             var isTouch by remember { mutableStateOf(false) }
 
@@ -164,8 +164,8 @@ private fun TouchIndicatorPreview() {
                 modifier = Modifier
                     .size(100.dp)
                     .touchIndicator { isTouch = it }
-                    .border(width = 1.dp, color = Black, shape = CircleShape)
-                    .background(White, CircleShape),
+                    .border(width = 1.dp, color = Color.Black, shape = CircleShape)
+                    .background(Color.White, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Text(text = if (isTouch) "Touch" else "Not Touch")

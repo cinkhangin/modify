@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.ckgin.modify"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 26
@@ -68,7 +68,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.ckgin",
         artifactId = "modify",
-        version = "1.0.0-alpha01"
+        version = "1.0.0-alpha02"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 

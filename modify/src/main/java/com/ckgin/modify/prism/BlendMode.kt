@@ -13,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ckgin.modify.White
 
 @Composable
 private fun ObjectBlending(blendMode: BlendMode) {
@@ -28,13 +28,13 @@ private fun ObjectBlending(blendMode: BlendMode) {
         val center = size.height / 2
 
         drawCircle(
-            color = androidx.compose.ui.graphics.Color.Red,
+            color = Color.Red,
             center = Offset(x = center, y = center),
             radius = center,
         )
         drawCircle(
             center = Offset(x = size.height, y = center),
-            color = androidx.compose.ui.graphics.Color.Blue,
+            color = Color.Blue,
             blendMode = blendMode,
             radius = center,
         )
@@ -43,11 +43,11 @@ private fun ObjectBlending(blendMode: BlendMode) {
 
 @Preview
 @Composable
-private fun ObjectBlendingPreview(modifier: Modifier = Modifier) {
+private fun ObjectBlendingPreview() {
     FlowRow(
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = White, shape = MaterialTheme.shapes.medium)
+            .background(color = Color.White, shape = MaterialTheme.shapes.medium)
             .padding(12.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)

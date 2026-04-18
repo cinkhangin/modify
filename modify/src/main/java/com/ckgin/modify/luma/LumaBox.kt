@@ -31,7 +31,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ckgin.modify.White
 
 @Composable
 internal fun LumaBox(modifier: Modifier = Modifier) {
@@ -39,7 +38,7 @@ internal fun LumaBox(modifier: Modifier = Modifier) {
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(5f / 3f)
-            .background(White.copy(0.1f))
+            .background(Color.White.copy(0.1f))
             .innerShadow(
                 shape = RectangleShape,
                 shadow = Shadow(
@@ -66,7 +65,7 @@ internal fun LumaBox(modifier: Modifier = Modifier) {
                 shape = RectangleShape,
                 shadow = Shadow(
                     radius = 5.dp,
-                    color = White,
+                    color = Color.White,
                     offset = DpOffset(
                         x = 0.dp,
                         y = 0.dp
