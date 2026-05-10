@@ -114,7 +114,7 @@ fun MainContent() {
         LazyVerticalGrid(
             columns = GridCells.Adaptive(48.dp)
         ) {
-            items(items = HugeIcons.all) {
+            items(items = HugeIcons.allIcons) {
                 Icon(
                     painter = painterResource(it),
                     modifier = Modifier.padding(12.dp),

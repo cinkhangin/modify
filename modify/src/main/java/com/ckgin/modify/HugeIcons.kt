@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlin.reflect.full.memberProperties
 
 
 @Composable
@@ -42,6 +43,7 @@ private fun HugeIconPreview() {
     }
 }
 
+@Suppress("unused")
 object HugeIcons {
     val Account = R.drawable.ic_account
     val Add = R.drawable.ic_add
@@ -52,6 +54,7 @@ object HugeIcons {
     val Back2 = R.drawable.ic_chevron_left
     val Bookmark = R.drawable.ic_bookmark
     val Bookmark2 = R.drawable.ic_bookmark2
+    val Bug = R.drawable.ic_bug
 
     val Close = R.drawable.ic_cancel
     val Cancel = Close
@@ -61,6 +64,7 @@ object HugeIcons {
     val Cursor = R.drawable.ic_cursor
 
     val Delete = R.drawable.ic_delete
+    val Document = R.drawable.ic_document
     val Dollar = R.drawable.ic_dollar
     val Done = R.drawable.ic_done
     val Draw = R.drawable.ic_draw
@@ -75,6 +79,7 @@ object HugeIcons {
 
     val Gift = R.drawable.ic_gift
 
+    val HeadPhones = R.drawable.ic_headphones
     val Home = R.drawable.ic_home
 
     val Image = R.drawable.ic_image
@@ -86,6 +91,7 @@ object HugeIcons {
     val Lock = R.drawable.ic_lock
     val Logout = R.drawable.ic_logout
 
+    val Mic = R.drawable.ic_mic
     val Mail = R.drawable.ic_mail
     val Menu = R.drawable.ic_menu
     val Message = R.drawable.ic_message
@@ -101,6 +107,8 @@ object HugeIcons {
     val Previous = R.drawable.ic_previous
     val Printer = R.drawable.ic_printer
 
+    val Rocket = R.drawable.ic_rocket
+
     val Save = R.drawable.ic_save
     val Search = R.drawable.ic_search
     val Send = R.drawable.ic_sent
@@ -111,63 +119,16 @@ object HugeIcons {
     val Star = R.drawable.ic_star
     val Stop = R.drawable.ic_stop
 
-    val all by lazy {
-        listOf(
-            Account,
-            Add,
-            AI,
-            Alert,
-            Back,
-            Back2,
-            Bookmark,
-            Bookmark2,
-            Cancel,
-            Champion,
-            Comment,
-            Copy,
-            Cursor,
-            Delete,
-            Dollar,
-            Done,
-            Draw,
-            Edit,
-            Eye,
-            EyeOff,
-            EyeOff2,
-            Favourite,
-            Folder,
-            Gift,
-            Home,
-            Image,
-            Info,
-            Internet,
-            Link,
-            Location,
-            Lock,
-            Logout,
-            Mail,
-            Menu,
-            Message,
-            Next,
-            Notification,
-            Paste,
-            Pause,
-            Pen,
-            Play,
-            Playstore,
-            Previous,
-            Printer,
-            Save,
-            Search,
-            Send,
-            Settings,
-            Settings2,
-            Share,
-            Shopping,
-            Star,
-            Stop,
-        )
-    }
+    val Terminal = R.drawable.ic_terminal
+
+    val User = R.drawable.ic_user
+    val User2 = R.drawable.ic_user2
+
+    val Volume = R.drawable.ic_volume
+
+    val allIcons = this::class.memberProperties
+        .filter { it.returnType.classifier == Int::class }
+        .map { it.getter.call(this) as Int }
 }
 
 @Preview
@@ -177,7 +138,7 @@ private fun HugeIconsPreview() {
         LazyVerticalGrid(
             columns = GridCells.Adaptive(48.dp)
         ) {
-            items(items = HugeIcons.all) {
+            items(items = HugeIcons.allIcons) {
                 Icon(
                     painter = painterResource(it),
                     modifier = Modifier.padding(12.dp),
