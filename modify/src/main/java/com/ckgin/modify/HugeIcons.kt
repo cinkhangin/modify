@@ -75,6 +75,9 @@ object HugeIcons {
     val EyeOff2 = R.drawable.ic_eye_off2
 
     val Favourite = R.drawable.ic_favourite
+    val FlashLight = R.drawable.ic_flashlight
+    val FlashOn = R.drawable.ic_flash_on
+    val FlashOff = R.drawable.ic_flash_off
     val Folder = R.drawable.ic_folder
 
     val Gift = R.drawable.ic_gift
