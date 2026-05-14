@@ -129,9 +129,15 @@ object HugeIcons {
 
     val Volume = R.drawable.ic_volume
 
-    val allIcons = this::class.memberProperties
-        .filter { it.returnType.classifier == Int::class }
-        .map { it.getter.call(this) as Int }
+    val allIcons: List<Int> by lazy {
+        try {
+            this::class.memberProperties
+                .filter { it.returnType.classifier == Int::class }
+                .map { it.getter.call(this) as Int }
+        } catch (e: Exception) {
+            listOf(Account, Home, Search, Gift)
+        }
+    }
 }
 
 @Preview

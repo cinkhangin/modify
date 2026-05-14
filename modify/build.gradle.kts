@@ -70,7 +70,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.ckgin",
         artifactId = "modify",
-        version = "1.0.0-rc"
+        version = "1.0.0"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
