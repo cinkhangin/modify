@@ -66,6 +66,7 @@ object HugeIcons {
     val Delete = R.drawable.ic_delete
     val Document = R.drawable.ic_document
     val Dollar = R.drawable.ic_dollar
+    val Download = R.drawable.ic_download
     val Done = R.drawable.ic_done
     val Draw = R.drawable.ic_draw
 
@@ -126,6 +127,7 @@ object HugeIcons {
 
     val User = R.drawable.ic_user
     val User2 = R.drawable.ic_user2
+    val Upload = R.drawable.ic_upload
 
     val Volume = R.drawable.ic_volume
 

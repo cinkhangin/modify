@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
 
+    implementation(libs.androidx.navigation3.runtime)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,7 +72,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.ckgin",
         artifactId = "modify",
-        version = "1.0.0"
+        version = "1.1.0"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 

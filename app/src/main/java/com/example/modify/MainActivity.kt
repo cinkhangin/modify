@@ -33,14 +33,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.modify.ui.theme.ModifyTheme
+import com.ckgin.modify.BeautifulBottomSheet
 import com.ckgin.modify.HugeIcons
-import com.ckgin.modify.BottomSheet
+import com.ckgin.modify.White
 import com.ckgin.modify.field.TextField
 import com.ckgin.modify.table.Table
 import com.ckgin.modify.themeColors
 import com.ckgin.modify.web.Browser
+import com.example.modify.ui.theme.ModifyTheme
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.seconds
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +81,7 @@ fun MainContent() {
 
 
     LaunchedEffect(Unit) {
-        delay(10000)
+        delay(10.seconds)
         focusRequester.requestFocus()
     }
 
@@ -140,8 +142,9 @@ fun MainContent() {
         )
     }
 
-    BottomSheet(
+    BeautifulBottomSheet(
         show = showSheet,
+        containerColor = White,
         onDismissRequest = { showSheet = false }
     ) {
         Box(
