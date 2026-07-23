@@ -1,4 +1,4 @@
-package com.ckgin.modify.prism
+package com.ckgin.modify
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
