@@ -26,14 +26,13 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import kotlin.math.min
+import androidx.compose.ui.graphics.asComposePath
+import androidx.graphics.shapes.CornerRounding
+import androidx.graphics.shapes.RoundedPolygon
+import androidx.graphics.shapes.toPath
 
-/**
- * A continuous-corner shape with independently configurable logical corners.
- *
- * Start and end corners are mirrored automatically in right-to-left layouts.
- */
 @Immutable
-class SquircleShape(
+data class SquircleShape(
     val topStart: CornerSize,
     val topEnd: CornerSize,
     val bottomEnd: CornerSize,
@@ -41,37 +40,35 @@ class SquircleShape(
     val smoothing: Float = DefaultSmoothing
 ) : Shape {
 
-    /**
-     * Creates a squircle whose four corners use the same fraction of the shape's smaller side.
-     *
-     * This constructor preserves the original API. For integer percentages, use
-     * `SquircleShape(cornerPercent = 20)`.
-     */
     constructor(
         cornerRadiusFraction: Float = DefaultCornerFraction,
         smoothing: Float = DefaultSmoothing
     ) : this(
-        topStart = FractionCornerSize(cornerRadiusFraction),
-        topEnd = FractionCornerSize(cornerRadiusFraction),
-        bottomEnd = FractionCornerSize(cornerRadiusFraction),
-        bottomStart = FractionCornerSize(cornerRadiusFraction),
+        corner = FractionCornerSize(cornerRadiusFraction),
         smoothing = smoothing
     )
 
-    /** Creates a squircle with the same [corner] on all four corners. */
     constructor(
         corner: CornerSize,
         smoothing: Float = DefaultSmoothing
-    ) : this(corner, corner, corner, corner, smoothing)
+    ) : this(
+        topStart = corner,
+        topEnd = corner,
+        bottomEnd = corner,
+        bottomStart = corner,
+        smoothing = smoothing
+    )
 
-    /** Creates a squircle with the same percentage on all four corners. */
     constructor(
         cornerPercent: Int,
         smoothing: Float = DefaultSmoothing
-    ) : this(CornerSize(cornerPercent), smoothing)
+    ) : this(
+        corner = CornerSize(cornerPercent),
+        smoothing = smoothing
+    )
 
     init {
-        require(smoothing in 0f..1f) {
+        require(smoothing.isFinite() && smoothing in 0f..1f) {
             "Smoothing must be between 0 and 1."
         }
     }
@@ -81,103 +78,74 @@ class SquircleShape(
         layoutDirection: LayoutDirection,
         density: Density
     ): Outline {
-        val width = size.width
-        val height = size.height
+        require(size.width.isFinite() && size.height.isFinite()) {
+            "Shape dimensions must be finite."
+        }
 
-        if (width <= 0f || height <= 0f) {
+        if (size.width <= 0f || size.height <= 0f) {
             return Outline.Generic(Path())
         }
 
-        val resolvedTopStart = topStart.toPx(size, density)
-        val resolvedTopEnd = topEnd.toPx(size, density)
-        val resolvedBottomEnd = bottomEnd.toPx(size, density)
-        val resolvedBottomStart = bottomStart.toPx(size, density)
+        val startTop = topStart.resolve(size, density)
+        val endTop = topEnd.resolve(size, density)
+        val endBottom = bottomEnd.resolve(size, density)
+        val startBottom = bottomStart.resolve(size, density)
 
-        require(
-            resolvedTopStart.isFinite() &&
-                resolvedTopEnd.isFinite() &&
-                resolvedBottomEnd.isFinite() &&
-                resolvedBottomStart.isFinite()
-        ) {
-            "Corner sizes must resolve to finite values."
-        }
-        require(
-            resolvedTopStart >= 0f &&
-                resolvedTopEnd >= 0f &&
-                resolvedBottomEnd >= 0f &&
-                resolvedBottomStart >= 0f
-        ) {
-            "Corner sizes must not be negative."
+        // Match the clockwise vertex order: TL, TR, BR, BL.
+        val radii = when (layoutDirection) {
+            LayoutDirection.Ltr -> listOf(
+                startTop,
+                endTop,
+                endBottom,
+                startBottom
+            )
+
+            LayoutDirection.Rtl -> listOf(
+                endTop,
+                startTop,
+                startBottom,
+                endBottom
+            )
         }
 
-        val (topLeft, topRight, bottomRight, bottomLeft) =
-            if (layoutDirection == LayoutDirection.Ltr) {
-                CornerRadii(
-                    resolvedTopStart,
-                    resolvedTopEnd,
-                    resolvedBottomEnd,
-                    resolvedBottomStart
+        // Construct at the actual dimensions to avoid stretching corners.
+        // RoundedPolygon fits rounding and smoothing to available edges.
+        val polygon = RoundedPolygon(
+            vertices = floatArrayOf(
+                0f, 0f,
+                size.width, 0f,
+                size.width, size.height,
+                0f, size.height
+            ),
+            perVertexRounding = radii.map { radius ->
+                CornerRounding(
+                    radius = radius,
+                    smoothing = smoothing
                 )
-            } else {
-                CornerRadii(
-                    resolvedTopEnd,
-                    resolvedTopStart,
-                    resolvedBottomStart,
-                    resolvedBottomEnd
-                )
-            }.scaledToFit(width, height)
+            },
+            centerX = size.width / 2f,
+            centerY = size.height / 2f
+        )
 
-        val controlFactor = CircleControlFactor + smoothing * SmoothingControlOffset
+        return Outline.Generic(polygon.toPath().asComposePath())
+    }
 
-        val path = Path().apply {
-            moveTo(topLeft, 0f)
-            lineTo(width - topRight, 0f)
-            addTopRightCorner(width, topRight, controlFactor)
+    private fun CornerSize.resolve(
+        size: Size,
+        density: Density
+    ): Float {
+        val radius = toPx(size, density)
 
-            lineTo(width, height - bottomRight)
-            addBottomRightCorner(width, height, bottomRight, controlFactor)
-
-            lineTo(bottomLeft, height)
-            addBottomLeftCorner(height, bottomLeft, controlFactor)
-
-            lineTo(0f, topLeft)
-            addTopLeftCorner(topLeft, controlFactor)
-            close()
+        require(radius.isFinite() && radius >= 0f) {
+            "Corner sizes must resolve to finite, non-negative values."
         }
 
-        return Outline.Generic(path)
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is SquircleShape) return false
-
-        return topStart == other.topStart &&
-            topEnd == other.topEnd &&
-            bottomEnd == other.bottomEnd &&
-            bottomStart == other.bottomStart &&
-            smoothing == other.smoothing
-    }
-
-    override fun hashCode(): Int {
-        var result = topStart.hashCode()
-        result = 31 * result + topEnd.hashCode()
-        result = 31 * result + bottomEnd.hashCode()
-        result = 31 * result + bottomStart.hashCode()
-        result = 31 * result + smoothing.hashCode()
-        return result
-    }
-
-    override fun toString(): String {
-        return "SquircleShape(topStart=$topStart, topEnd=$topEnd, " +
-            "bottomEnd=$bottomEnd, bottomStart=$bottomStart, smoothing=$smoothing)"
+        return radius
     }
 
     private companion object {
         const val DefaultCornerFraction = 0.2f
         const val DefaultSmoothing = 0.6f
-        const val CircleControlFactor = 0.5522848f
-        const val SmoothingControlOffset = 0.18f
     }
 }
 

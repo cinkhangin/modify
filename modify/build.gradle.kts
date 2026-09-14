@@ -58,7 +58,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
     debugImplementation(libs.compose.ui.tooling)
 
     implementation(libs.kotlin.reflect)
@@ -72,7 +71,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.ckgin",
         artifactId = "modify",
-        version = "1.2.0"
+        version = "1.2.1"
     )
     //./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
